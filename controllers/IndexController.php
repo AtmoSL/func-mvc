@@ -1,5 +1,7 @@
 <?php
 
 function indexAction(){
-    echo "Метод index контроллера Index";
+    $hello = "Метод index контроллера Index";
+
+    render("index", compact("hello"));
 }
