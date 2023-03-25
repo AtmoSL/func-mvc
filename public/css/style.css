@@ -1,0 +1,153 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+html,
+body{
+    height: 100%;
+}
+.wrapper{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.main{
+    flex-grow: 1;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 0px 5px;
+    margin: auto;
+}
+
+/* Панель навигации */
+.header {
+    background-color: #9B92FF;
+    height: 83px;
+}
+
+.header__navigation__logo {
+    text-transform: uppercase;
+    margin: 19px 0px;
+}
+
+.header__navigation__logo a {
+    color: white;
+    font-size: 36px;
+    line-height: 44px;
+    text-decoration: none;
+}
+
+.header__navigation__logo h1 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 44px;
+}
+
+.header__navigation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__navigation__list {
+    margin: 24px 0px;
+    display: flex;
+}
+
+.header__navigation__list__item {
+    margin-left: 17px;
+}
+
+.header__navigation__list__item a {
+    color: white;
+    font-size: 24px;
+    line-height: 28px;
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Каталог */
+.catalog__title h2 {
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 52px;
+    text-align: center;
+}
+
+.catalog__inner {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* Карточки товаров */
+.catalog__card {
+    background: #F3F3F3;
+    box-shadow: 0px 4px 23px rgba(0, 0, 0, 0.25);
+    padding: 14px 14px 24px 14px;
+    margin: 20px 9px;
+}
+
+.catalog__card__inner{
+}
+
+.catalog__card__image{
+    text-align: center;
+}
+
+.catalog__card__title {
+    text-transform: uppercase;
+    font-size: 21px;
+    line-height: 25px;
+}
+
+.catalog__card__category {
+    text-transform: lowercase;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 72.19%;
+    margin-bottom: 22px;
+}
+
+.catalog__card__price {
+    text-align: center;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 21px;
+}
+
+.catalog__card__button {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+    text-decoration: none;
+    padding: 12px 40px;
+    background: #E4B7FF;
+    border-radius: 14px;
+    text-transform: uppercase;
+}
+
+/*футер*/
+.footer{
+    height: 121px;
+    background: #9B92FF;
+    text-align: right;
+}
+.footer__text{
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: rgba(244, 244, 244, 0.74);
+
+    margin-top: 49px;
+    margin-right: 40px;
+}
+.footer__text a{
+    color: rgba(244, 244, 244, 0.74);
+}
