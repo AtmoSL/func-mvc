@@ -1,5 +1,5 @@
 <?php
 
 //Константы пути для контроллеров
-define("ControllersPrefix", "../controllers/");
-define("ControllersPostfix", "Controller.php");
+const ControllersPrefix = "../controllers/";
+const ControllersPostfix = "Controller.php";
