@@ -42,11 +42,9 @@ function mysqliQueryArray($sql){
     $row = mysqli_query(DB_CONNECT, $sql);
 
     $result = [];
-    $i = 0;
 
-    foreach ($row as $r){
-        $result[$i] = $r;
-        $i++;
+    while($rw = $row->fetch_assoc()){
+        $result[] = $rw;
     }
 
     return $result;
