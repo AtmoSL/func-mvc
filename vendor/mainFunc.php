@@ -49,3 +49,16 @@ function mysqliQueryArray($sql){
 
     return $result;
 }
+
+/**
+ *
+ * Функция дебага
+ *
+ * @param $value
+ * @param $die
+ */
+function debug($value = null, $die = 1){
+    print_r($value);
+    echo '</pre>';
+    if($die) die;
+}
