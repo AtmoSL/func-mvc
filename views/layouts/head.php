@@ -30,6 +30,28 @@
                 </div>
                 <ul class="header__navigation__list">
                     <li class="header__navigation__list__item">
+                        <a href="#">Категории v</a>
+
+                        <ul>
+                        <?php /** @var array $categories */
+                        foreach ($categories as $category) { ?>
+                                    <li>
+                                        <a href="#"><?= $category["title"] ?></a>
+                                        <?php if (isset($category["children"])){ ?> >
+                                        <ul>
+                                            <?php foreach ($category["children"] as $child) { ?>
+                                            <li>
+                                                <a href="#"><?= $child["title"] ?></a>
+                                            </li>
+                                            <?php } ?>
+                                        </ul>
+                                        <?php }?>
+                                    </li>
+                        <?php } ?>
+                        </ul>
+
+                    </li>
+                    <li class="header__navigation__list__item">
                         <a href="#">Каталог</a>
                     </li>
                     <li class="header__navigation__list__item">

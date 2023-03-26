@@ -8,8 +8,8 @@ include "../models/ProductModel.php";
  * @return void
  */
 function indexAction(){
-    $hello = "Метод index контроллера Index";
     $products = takeAllProductsWithCategories();
+    $categories = takeAllCategoriesForUl();
 
-    render("index", compact("hello", "products"));
+    render("index", compact( "products", "categories"));
 }
