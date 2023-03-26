@@ -104,12 +104,20 @@ body{
     line-height: 25px;
 }
 
-.catalog__card__category {
+.catalog__card__category{
+    margin-bottom: 22px;
+}
+.catalog__card__category a{
     text-transform: lowercase;
     font-weight: 300;
     font-size: 14px;
     line-height: 72.19%;
-    margin-bottom: 22px;
+    color: black;
+    text-decoration: none;
+}
+
+.catalog__card__category a:hover{
+    text-decoration: underline;
 }
 
 .catalog__card__price {

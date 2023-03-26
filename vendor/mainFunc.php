@@ -30,3 +30,24 @@ function render($view, $params = []){
     extract($params);
     require_once "../views/".$view.".php";
 }
+
+/**
+ * Преобразование результата SQL в массив
+ *
+ * @param $sql
+ * @return array
+ */
+function mysqliQueryArray($sql){
+
+    $row = mysqli_query(DB_CONNECT, $sql);
+
+    $result = [];
+    $i = 0;
+
+    foreach ($row as $r){
+        $result[$i] = $r;
+        $i++;
+    }
+
+    return $result;
+}
