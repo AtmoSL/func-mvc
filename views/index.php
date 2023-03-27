@@ -15,13 +15,13 @@
                 <div class="catalog__card">
                     <div class="catalog__card__inner">
                         <div class="catalog__card__image">
-                            <img src="img/products/<?= $product['photo_path'] ?>" alt="<?= $product['title'] ?>">
+                            <img src="/img/products/<?= $product['photo_path'] ?>" alt="<?= $product['title'] ?>">
                         </div>
                         <div class="catalog__card__title">
                             <?= $product['title'] ?>
                         </div>
                         <div class="catalog__card__category">
-                            <a href="#"><?= $product['category']['title'] ?></a>
+                            <a href="/category/<?= $product['category']['id'] ?>/"><?= $product['category']['title'] ?></a>
                         </div>
                         <div class="catalog__card__price">
                             <?= $product['price'] ?><span> руб.</span>

@@ -11,8 +11,8 @@
     <link
             href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
             rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
 
 </head>
 
@@ -24,7 +24,7 @@
         <div class="container">
             <nav class="header__navigation">
                 <div class="header__navigation__logo">
-                    <a href="#">
+                    <a href="/">
                         <h1>Mvc-func</h1>
                     </a>
                 </div>
@@ -36,12 +36,12 @@
                         <?php /** @var array $categories */
                         foreach ($categories as $categoryItem) { ?>
                                     <li>
-                                        <a href="#"><?= $categoryItem["title"] ?></a>
+                                        <a href="/category/<?=$categoryItem['id']?>/"><?= $categoryItem["title"] ?></a>
                                         <?php if (isset($categoryItem["children"])){ ?> >
                                         <ul>
                                             <?php foreach ($categoryItem["children"] as $child) { ?>
                                             <li>
-                                                <a href="#"><?= $child["title"] ?></a>
+                                                <a href="/category/<?=$child['id']?>/"><?= $child["title"] ?></a>
                                             </li>
                                             <?php } ?>
                                         </ul>
@@ -51,8 +51,10 @@
                         </ul>
 
                     </li>
+
+
                     <li class="header__navigation__list__item">
-                        <a href="#">Каталог</a>
+                        <a href="/catalog/">Каталог</a>
                     </li>
                     <li class="header__navigation__list__item">
                         <a href="#">Корзина</a>
