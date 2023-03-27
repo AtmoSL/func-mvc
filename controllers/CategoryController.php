@@ -13,7 +13,7 @@ function indexAction(){
     $id = isset($_GET['id']) ? $_GET['id'] : null;
 
     $children = null;
-    $category = takeCategory($id);
+    $category = getCategory($id);
 
     if($category["parent_id"] == 0){
         $children = getChildrenForCat($id);
@@ -22,6 +22,6 @@ function indexAction(){
     $products = getProductsByCategory($id);
 
 
-    $categories = takeAllCategoriesForUl();
+    $categories = getAllCategoriesForUl();
     render('category', compact('products', 'children', 'category', 'categories'));
 }

@@ -10,8 +10,8 @@ include "../models/ProductModel.php";
  * @return void
  */
 function indexAction(){
-    $products = takeAllProductsWithCategories();
-    $categories = takeAllCategoriesForUl();
+    $products = getAllProductsWithCategories();
+    $categories = getAllCategoriesForUl();
 
     render("index", compact( "products", "categories"));
 }

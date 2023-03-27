@@ -5,7 +5,7 @@
  *
  * @return array
  */
-function takeAllCategoriesForUl(){
+function getAllCategoriesForUl(){
     $sql = "SELECT * FROM `categories` WHERE `parent_id` = 0";
 
     $rs = mysqli_query(DB_CONNECT, $sql);
@@ -28,7 +28,7 @@ function takeAllCategoriesForUl(){
  * @param $id
  * @return array
  */
-function takeCategory($id){
+function getCategory($id){
     $sql = "SELECT * FROM `categories` WHERE id = $id";
 
     $result = mysqliQueryArray($sql);

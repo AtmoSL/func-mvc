@@ -5,7 +5,7 @@
  *
  * @return array
  */
-function takeAllProducts(){
+function getAllProducts(){
     $sql = "SELECT * FROM `products`";
 
     $result = mysqliQueryArray($sql);
@@ -19,11 +19,11 @@ function takeAllProducts(){
  *
  * @return array
  */
-function takeAllProductsWithCategories(){
-    $products = takeAllProducts();
+function getAllProductsWithCategories(){
+    $products = getAllProducts();
 
     foreach ($products as $key => $product){
-        $products[$key]["category"] = takeCategory($product["category_id"]);
+        $products[$key]["category"] = getCategory($product["category_id"]);
     }
 
     return $products;
@@ -41,7 +41,7 @@ function getProductsByCategory($categoryId){
     $products = mysqliQueryArray($sql);
 
     foreach ($products as $key => $product){
-        $products[$key]["category"] = takeCategory($product["category_id"]);
+        $products[$key]["category"] = getCategory($product["category_id"]);
     }
 
     return $products;
