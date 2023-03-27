@@ -1,4 +1,6 @@
 <?php
+
+include "../models/CategoryModel.php";
 include "../models/ProductModel.php";
 
 

@@ -46,7 +46,6 @@ function mysqliQueryArray($sql){
     while($rw = $row->fetch_assoc()){
         $result[] = $rw;
     }
-
     return $result;
 }
 

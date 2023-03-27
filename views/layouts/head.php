@@ -34,12 +34,12 @@
 
                         <ul>
                         <?php /** @var array $categories */
-                        foreach ($categories as $category) { ?>
+                        foreach ($categories as $categoryItem) { ?>
                                     <li>
-                                        <a href="#"><?= $category["title"] ?></a>
-                                        <?php if (isset($category["children"])){ ?> >
+                                        <a href="#"><?= $categoryItem["title"] ?></a>
+                                        <?php if (isset($categoryItem["children"])){ ?> >
                                         <ul>
-                                            <?php foreach ($category["children"] as $child) { ?>
+                                            <?php foreach ($categoryItem["children"] as $child) { ?>
                                             <li>
                                                 <a href="#"><?= $child["title"] ?></a>
                                             </li>
