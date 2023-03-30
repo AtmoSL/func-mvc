@@ -177,6 +177,8 @@ nav ul ul ul {
     background: #E4B7FF;
     border-radius: 14px;
     text-transform: uppercase;
+
+    cursor: pointer;
 }
 
 /*футер*/

@@ -41,7 +41,7 @@
                         <div class="catalog__card__price">
                             <?= $product['price'] ?><span> руб.</span>
                         </div>
-                        <a href="#" class="catalog__card__button">В корзину</a>
+                        <div class="catalog__card__button" id="<?= $product['id'] ?>">В корзину</div>
                     </div>
                 </div>
 
