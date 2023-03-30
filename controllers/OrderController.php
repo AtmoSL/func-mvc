@@ -11,7 +11,9 @@ function indexAction(){
     $orderProducts = [];
 
     if(isset($_SESSION['cartProductsId'])){
-        $orderProducts = getProductsByIds($_SESSION['cartProductsId']);
+        $ids = array_keys($_SESSION['cartProductsId']);
+
+        $orderProducts = getProductsByIds($ids);
     }
 
     $categories = getAllCategoriesForUl();

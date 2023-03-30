@@ -64,5 +64,14 @@ function getProductsByIds($ids = []){
     }
 
     return $products;
+}
+
+function getProductById($id){
+    $sql = "SELECT * FROM `products` WHERE id = $id";
+
+    $product = mysqliQueryArray($sql);
+
+    if (!count($product)) return false;
+    return $product[0];
 
 }

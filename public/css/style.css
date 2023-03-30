@@ -222,7 +222,7 @@ nav ul ul ul {
     text-decoration: none;
 
 
-    padding: 12px 40px;
+    padding: 20px 0;
     background: #E4B7FF;
     border-radius: 14px;
     text-transform: uppercase;
@@ -230,7 +230,7 @@ nav ul ul ul {
     display: block;
     text-align: center;
     max-width: 648px;
-    margin: auto;
+    margin: 40px auto;
 
 }
 
