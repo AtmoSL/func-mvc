@@ -46,3 +46,23 @@ function getProductsByCategory($categoryId){
 
     return $products;
 }
+
+/**
+ * Получение массива товаров по id
+ *
+ * @param $ids
+ * @return array
+ */
+function getProductsByIds($ids = []){
+    $ids_str = implode(',', $ids);
+    $sql = "SELECT * FROM `products` WHERE id in ($ids_str)";
+
+    $products = mysqliQueryArray($sql);
+
+    foreach ($products as $key => $product){
+        $products[$key]["category"] = getCategory($product["category_id"]);
+    }
+
+    return $products;
+
+}

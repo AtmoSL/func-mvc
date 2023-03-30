@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once "../config/config.php"; //Подключения конфига
 require_once "../config/db.php"; //Подключение базы данных

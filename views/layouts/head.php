@@ -54,10 +54,10 @@
 
 
                     <li class="header__navigation__list__item">
-                        <a href="/catalog/">Каталог</a>
+                        <a href="/">Каталог</a>
                     </li>
                     <li class="header__navigation__list__item">
-                        <a href="#">Корзина</a>
+                        <a href="/order/"><?php  if(isset($_SESSION['cartProductsId'])){ ?><span>(<?= count($_SESSION['cartProductsId']) ?>)</span><?php } ?>Корзина</a>
                     </li>
                 </ul>
             </nav>

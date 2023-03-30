@@ -109,7 +109,7 @@ nav ul ul ul {
  }
 
 /* Каталог */
-.catalog__title h2 {
+.title h2 {
     font-weight: 700;
     font-size: 44px;
     line-height: 52px;
@@ -179,6 +179,59 @@ nav ul ul ul {
     text-transform: uppercase;
 
     cursor: pointer;
+}
+
+/*Страница оформления заказа*/
+.order__title{
+    margin-bottom: 52px;
+}
+.order__separator{
+    margin: auto;
+    background-color: #000000;
+    height: 1px;
+    max-width: 648px;
+}
+.order__card{
+    display: flex;
+    max-width: 648px;
+    margin: auto;
+    justify-content: space-around;
+}
+
+.order__inner{
+    margin-bottom: 40px;
+}
+
+.order__message{
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 52px;
+    /* identical to box height */
+    text-align: center;
+
+    margin-top: 40px;
+
+    color: #818181;
+
+}
+.order__create__btn{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+    text-decoration: none;
+
+
+    padding: 12px 40px;
+    background: #E4B7FF;
+    border-radius: 14px;
+    text-transform: uppercase;
+
+    display: block;
+    text-align: center;
+    max-width: 648px;
+    margin: auto;
+
 }
 
 /*футер*/

@@ -3,7 +3,7 @@
     <!-- Каталог -->
     <section class="catalog">
         <div class="container">
-            <div class="catalog__title">
+            <div class="catalog__title title">
                 <h2>Каталог</h2>
             </div>
             <div class="catalog__inner">
