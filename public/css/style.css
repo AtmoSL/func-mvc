@@ -1,17 +1,19 @@
-body{
+body {
     font-family: 'Roboto', sans-serif;
 }
 
 html,
-body{
+body {
     height: 100%;
 }
-.wrapper{
+
+.wrapper {
     min-height: 100%;
     display: flex;
     flex-direction: column;
 }
-.main{
+
+.main {
     flex-grow: 1;
 }
 
@@ -67,7 +69,8 @@ body{
     color: white;
     text-decoration: none;
 }
-.header__navigation__list__item a:hover{
+
+.header__navigation__list__item a:hover {
     font-size: 24px;
     line-height: 28px;
     color: white;
@@ -75,38 +78,43 @@ body{
 }
 
 /* Выпадающий список категорий */
-nav ul{
+nav ul {
     position: relative;
     background-color: #9B92FF;
     font-size: 24px;
     line-height: 28px;
     color: white;
 }
-nav ul ul{
+
+nav ul ul {
     display: none;
     position: absolute;
     top: 100%;
     border: solid #E4B7FF;
 }
+
 nav ul li:hover > ul {
-    display:inherit;
+    display: inherit;
 }
+
 nav ul ul li {
-    min-width:170px;
+    min-width: 170px;
     padding: 5px 10px;
-    float:none;
-    display:list-item;
+    float: none;
+    display: list-item;
     position: relative;
     border-bottom: solid #E4B7FF;
 }
+
 nav ul ul li:hover {
     background-color: #563d66;
 }
+
 nav ul ul ul {
-     position: absolute;
-     top:0;
-     left:100%;
- }
+    position: absolute;
+    top: 0;
+    left: 100%;
+}
 
 /* Каталог */
 .title h2 {
@@ -130,10 +138,10 @@ nav ul ul ul {
     margin: 20px 9px;
 }
 
-.catalog__card__inner{
+.catalog__card__inner {
 }
 
-.catalog__card__image{
+.catalog__card__image {
     text-align: center;
 }
 
@@ -143,10 +151,11 @@ nav ul ul ul {
     line-height: 25px;
 }
 
-.catalog__card__category{
+.catalog__card__category {
     margin-bottom: 22px;
 }
-.catalog__card__category a{
+
+.catalog__card__category a {
     text-transform: lowercase;
     font-weight: 300;
     font-size: 14px;
@@ -155,7 +164,7 @@ nav ul ul ul {
     text-decoration: none;
 }
 
-.catalog__card__category a:hover{
+.catalog__card__category a:hover {
     text-decoration: underline;
 }
 
@@ -179,30 +188,106 @@ nav ul ul ul {
     text-transform: uppercase;
 
     cursor: pointer;
+    user-select: none;
 }
 
 /*Страница оформления заказа*/
-.order__title{
+.order__title {
     margin-bottom: 52px;
 }
-.order__separator{
+
+.order__separator {
     margin: auto;
     background-color: #000000;
     height: 1px;
     max-width: 648px;
 }
-.order__card{
+
+.order__card {
     display: flex;
     max-width: 648px;
     margin: auto;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
-.order__inner{
+.order__card__actions, .order__card__info {
+    text-align: center;
+}
+
+.order__card__title {
+    text-transform: uppercase;
+
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+
+    margin-top: 20px;
+    margin-bottom: 14px;
+}
+
+.order__card__category {
+    margin-bottom: 43px;
+}
+
+.order__card__category a {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 72.19%;
+    color: black;
+    text-decoration: none;
+
+    text-transform: lowercase;
+}
+
+.order__card__category a:hover {
+    text-decoration: underline;
+}
+
+.order__card__price {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.order__card__delete {
+    padding: 20px 40px;
+    background-color: #d96363;
+    border-radius: 14px;
+
+    cursor: pointer;
+    user-select: none;
+
+    margin-top: 25px;
+    margin-bottom: 15px;
+
+    text-transform: uppercase;
+}
+
+.order__card__count {
+    display: flex;
+    justify-content: center;
+}
+
+.order__card__count__minus, .order__card__count__plus{
+    font-size: 62px;
+    line-height: 51px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.order__card__count__text {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+
+    margin: 8px 10px;
+}
+
+.order__inner {
     margin-bottom: 40px;
 }
 
-.order__message{
+.order__message {
     font-weight: 700;
     font-size: 44px;
     line-height: 52px;
@@ -214,7 +299,8 @@ nav ul ul ul {
     color: #818181;
 
 }
-.order__create__btn{
+
+.order__create__btn {
     font-weight: 500;
     font-size: 20px;
     line-height: 23px;
@@ -235,12 +321,13 @@ nav ul ul ul {
 }
 
 /*футер*/
-.footer{
+.footer {
     height: 121px;
     background: #9B92FF;
     text-align: right;
 }
-.footer__text{
+
+.footer__text {
     font-weight: 300;
     font-size: 20px;
     line-height: 23px;
@@ -250,6 +337,7 @@ nav ul ul ul {
     margin-top: 49px;
     margin-right: 40px;
 }
-.footer__text a{
+
+.footer__text a {
     color: rgba(244, 244, 244, 0.74);
 }
