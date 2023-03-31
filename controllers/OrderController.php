@@ -10,8 +10,8 @@ include "../models/ProductModel.php";
 function indexAction(){
     $orderProducts = [];
 
-    if(isset($_SESSION['cartProductsId'])){
-        $ids = array_keys($_SESSION['cartProductsId']);
+    if(isset($_SESSION['cart'])){
+        $ids = array_keys($_SESSION['cart']['productsId']);
 
         $orderProducts = getProductsByIds($ids);
     }

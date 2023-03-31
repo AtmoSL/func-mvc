@@ -33,21 +33,21 @@
                         <a href="#">Категории v</a>
 
                         <ul>
-                        <?php /** @var array $categories */
-                        foreach ($categories as $categoryItem) { ?>
-                                    <li>
-                                        <a href="/category/<?=$categoryItem['id']?>/"><?= $categoryItem["title"] ?></a>
-                                        <?php if (isset($categoryItem["children"])){ ?> >
+                            <?php /** @var array $categories */
+                            foreach ($categories as $categoryItem) { ?>
+                                <li>
+                                    <a href="/category/<?= $categoryItem['id'] ?>/"><?= $categoryItem["title"] ?></a>
+                                    <?php if (isset($categoryItem["children"])) { ?> >
                                         <ul>
                                             <?php foreach ($categoryItem["children"] as $child) { ?>
-                                            <li>
-                                                <a href="/category/<?=$child['id']?>/"><?= $child["title"] ?></a>
-                                            </li>
+                                                <li>
+                                                    <a href="/category/<?= $child['id'] ?>/"><?= $child["title"] ?></a>
+                                                </li>
                                             <?php } ?>
                                         </ul>
-                                        <?php }?>
-                                    </li>
-                        <?php } ?>
+                                    <?php } ?>
+                                </li>
+                            <?php } ?>
                         </ul>
 
                     </li>
@@ -57,7 +57,9 @@
                         <a href="/">Каталог</a>
                     </li>
                     <li class="header__navigation__list__item">
-                        <a href="/order/"><?php  if(isset($_SESSION['cartProductsId'])){ ?><span>(<?= count($_SESSION['cartProductsId']) ?>)</span><?php } ?>Корзина</a>
+                        <a href="/order/"><span id="#cartCounter">
+                                <?php if (isset($_SESSION['cart']['count'])){ ?> (<?= $_SESSION['cart']['count'] ?>)<?php } ?></span>
+                            Корзина</a>
                     </li>
                 </ul>
             </nav>

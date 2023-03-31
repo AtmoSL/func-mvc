@@ -1,6 +1,6 @@
 console.log('Я подключён');
 const mainUrl = "http://func-mvc/";
-
+const cartCounter = document.getElementById('#cartCounter');
 let cartButtons = document.querySelectorAll(".catalog__card__button"); //Получение всех кнопок "В корзину"
 
 /**
@@ -12,9 +12,10 @@ cartButtons.forEach(function (cartButton) {
         fetch(mainUrl+"cart/addtocart/" + event.target.id +"/", {
             method: 'GET'
         })
-            .then((response) => console.log(response.json()))
+            .then((response) => response.json())
             .then((data) => {
                 console.log(data);
+                cartCounter.textContent = "("+data+")";
             });
     });
 });

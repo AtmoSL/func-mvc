@@ -12,17 +12,22 @@ function addToCartAction()
 {
     $id = isset($_GET['id']) ? $_GET['id'] : null;
 
-    if (!isset($_SESSION['cartProductsId'])) $_SESSION['cartProductsId'] = [];
+    if (!isset($_SESSION['cart'])){
+        $_SESSION['cart'] = [];
+        $_SESSION['cart']['count'] = 0;
+    }
 
     $product = getProductById($id);
 
     if (empty($product)) echo "Товаров нет";
 
-    if (empty($_SESSION['cartProductsId'][$id])) {
-        $_SESSION['cartProductsId'][$id]['count'] = 1;
+    if (empty($_SESSION['cart'][$id])) {
+        $_SESSION['cart']['productsId'][$id]['count'] = 1;
     } else {
-        $_SESSION['cartProductsId'][$id]['count']++;
+        $_SESSION['cart']['productsId'][$id]['count']++;
     }
 
-    echo (json_encode($_SESSION['cartProductsId']));
+    $_SESSION['cart']['count']++;
+
+    echo (json_encode($_SESSION['cart']['count']));
 }
