@@ -6,7 +6,7 @@ include "../models/ProductModel.php";
 /**
  * Добавление товара в корзину
  *
- * @return string
+ *
  */
 function addToCartAction()
 {
@@ -16,7 +16,7 @@ function addToCartAction()
 
     $product = getProductById($id);
 
-    if (empty($product)) return null;
+    if (empty($product)) echo "Товаров нет";
 
     if (empty($_SESSION['cartProductsId'][$id])) {
         $_SESSION['cartProductsId'][$id]['count'] = 1;
@@ -24,5 +24,5 @@ function addToCartAction()
         $_SESSION['cartProductsId'][$id]['count']++;
     }
 
-    return json_encode($_SESSION['cartProductsId']);
+    echo (json_encode($_SESSION['cartProductsId']));
 }
