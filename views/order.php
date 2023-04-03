@@ -5,7 +5,7 @@
         <div class="order__title title">
             <h2>Оформление заказа</h2>
         </div>
-        <div class="order__inner">
+        <div class="order__inner" id="orderInner">
             <div class="order__separator"></div>
             <?php /** @var array $orderProducts */
             foreach ($orderProducts as $orderProduct) { ?>
@@ -29,15 +29,15 @@
                             Удалить
                         </div>
                         <div class="order__card__count">
-                            <div class="order__card__count__minus">—</div>
-                            <div class="order__card__count__text">
+                            <div class="order__card__count__minus" id="<?= $orderProduct['id'] ?>">—</div>
+                            <div class="order__card__count__text" id="productCountText-<?= $orderProduct['id'] ?>">
                                 <?= $orderProduct['count']; ?> шт.
                             </div>
                             <div class="order__card__count__plus">+</div>
                         </div>
                     </div>
                 </div>
-                <div class="order__separator"></div>
+                <div class="order__separator" id="orderSeparator-<?=$orderProduct['id'] ?>"></div>
             <?php } ?>
         </div>
 
@@ -46,7 +46,7 @@
                 Корзина пуста
             </div>
         <?php } else { ?>
-            <a href="#" class="order__create__btn">Оформить заказ</a>
+            <a href="#" class="order__create__btn" id="makeOrderButton">Оформить заказ</a>
         <?php } ?>
 
     </div>
