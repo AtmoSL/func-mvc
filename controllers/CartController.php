@@ -1,96 +1,26 @@
 <?php
-
 include "../models/CategoryModel.php";
 include "../models/ProductModel.php";
 
 /**
- * Добавление товара в корзину
- *
- *
- */
-function addToCartAction()
-{
-    $id = isset($_GET['id']) ? $_GET['id'] : null;
-
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
-        $_SESSION['cart']['count'] = 0;
-    }
-
-    $product = getProductById($id);
-
-    if (empty($product)) echo "Товаров нет";
-
-    if (empty($_SESSION['cart']['productsId'][$id])) {
-        $_SESSION['cart']['productsId'][$id]['count'] = 1;
-    } else {
-        $_SESSION['cart']['productsId'][$id]['count']++;
-    }
-
-    $_SESSION['cart']['count']++;
-
-    echo(json_encode($_SESSION['cart']['count']));
-}
-
-/**
- * Удаление товара из корзины
+ * Генерация страницы оформления заказа
  *
  * @return void
  */
-function deleteFromCartAction()
-{
-    $id = isset($_GET['id']) ? $_GET['id'] : null;
+function indexAction(){
+    $cartProducts = [];
 
-    if (!empty($_SESSION['cart']['productsId'][$id])) {
-        $_SESSION['cart']['count'] -= $_SESSION['cart']['productsId'][$id]['count'];
+    if(isset($_SESSION['cart']) && count($_SESSION['cart']['productsId']) > 0){
+        $ids = array_keys($_SESSION['cart']['productsId']);
 
-        unset($_SESSION['cart']['productsId'][$id]);
+        $cartProducts = getProductsByIds($ids);
     }
 
-    echo(json_encode($_SESSION['cart']['count']));
-}
-
-function minusFromCartAction(){
-    $id = isset($_GET['id']) ? $_GET['id'] : null;
-    $productCount = 0;
-
-    if (!empty($_SESSION['cart']['productsId'][$id])) {
-
-        $_SESSION['cart']['count']--;
-        $_SESSION['cart']['productsId'][$id]['count']--;
-
-        $productCount = $_SESSION['cart']['productsId'][$id]['count'];
-
-        if($_SESSION['cart']['productsId'][$id]['count'] == 0){
-            unset($_SESSION['cart']['productsId'][$id]);
-        }
+    foreach($cartProducts as $key => $cartProduct){
+        $cartProducts[$key]['count'] = $_SESSION['cart']['productsId'][$cartProduct['id']]['count'];
     }
 
-    $result = [
-        "count" => $_SESSION['cart']['count'],
-        "productCount" => $productCount,
-    ];
+    $categories = getAllCategoriesForUl();
 
-    echo(json_encode($result));
-
-}
-function plusCartAction(){
-    $id = isset($_GET['id']) ? $_GET['id'] : null;
-    $productCount = 0;
-
-    if (!empty($_SESSION['cart']['productsId'][$id])) {
-
-        $_SESSION['cart']['count']++;
-        $_SESSION['cart']['productsId'][$id]['count']++;
-
-        $productCount = $_SESSION['cart']['productsId'][$id]['count'];
-    }
-
-    $result = [
-        "count" => $_SESSION['cart']['count'],
-        "productCount" => $productCount,
-    ];
-
-    echo(json_encode($result));
-
+    render("cart", compact('categories', 'cartProducts'));
 }

@@ -57,7 +57,7 @@
                         <a href="/">Каталог</a>
                     </li>
                     <li class="header__navigation__list__item">
-                        <a href="/order/"><span id="#cartCounter">
+                        <a href="/cart/"><span id="#cartCounter">
                                 <?php if (isset($_SESSION['cart']['count']) && $_SESSION['cart']['count'] > 0){ ?>
                                     (<?= $_SESSION['cart']['count'] ?>)<?php } ?></span>
                             Корзина</a>
