@@ -74,3 +74,23 @@ function minusFromCartAction(){
     echo(json_encode($result));
 
 }
+function plusCartAction(){
+    $id = isset($_GET['id']) ? $_GET['id'] : null;
+    $productCount = 0;
+
+    if (!empty($_SESSION['cart']['productsId'][$id])) {
+
+        $_SESSION['cart']['count']++;
+        $_SESSION['cart']['productsId'][$id]['count']++;
+
+        $productCount = $_SESSION['cart']['productsId'][$id]['count'];
+    }
+
+    $result = [
+        "count" => $_SESSION['cart']['count'],
+        "productCount" => $productCount,
+    ];
+
+    echo(json_encode($result));
+
+}

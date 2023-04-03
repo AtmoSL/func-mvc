@@ -33,7 +33,7 @@
                             <div class="order__card__count__text" id="productCountText-<?= $orderProduct['id'] ?>">
                                 <?= $orderProduct['count']; ?> шт.
                             </div>
-                            <div class="order__card__count__plus">+</div>
+                            <div class="order__card__count__plus" id="<?= $orderProduct['id'] ?>">+</div>
                         </div>
                     </div>
                 </div>
