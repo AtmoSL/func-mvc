@@ -62,6 +62,15 @@
                                     (<?= $_SESSION['cart']['count'] ?>)<?php } ?></span>
                             Корзина</a>
                     </li>
+                    <li class="header__navigation__list__item">
+                        <?php if(!isset($_SESSION['user'])) {?>
+                        <a href="/register/">
+                            Регистрация</a>
+                       <?php }else{ ?>
+                            <a href="/login/logout/">
+                                Выход</a>
+                        <?php }?>
+                    </li>
                 </ul>
             </nav>
         </div>

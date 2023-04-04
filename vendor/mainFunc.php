@@ -80,8 +80,9 @@ function mysqliQueryArray($sql)
 function mysqliCreate($sql)
 {
     mysqli_query(DB_CONNECT, $sql);
+    $id = mysqli_insert_id(DB_CONNECT);
 
-    return true;
+    return $id;
 }
 
 function mysqliRowCheck($conditions, $tableName)
