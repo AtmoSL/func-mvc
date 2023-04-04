@@ -31,9 +31,9 @@ function getAllCategoriesForUl(){
 function getCategory($id){
     $sql = "SELECT * FROM `categories` WHERE id = $id";
 
-    $result = mysqliQueryArray($sql);
+    $result = mysqliQueryOneArray($sql);
 
-    return $result[0];
+    return $result;
 }
 
 /**
