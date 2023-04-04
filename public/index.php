@@ -3,6 +3,7 @@ session_start();
 
 require_once "../config/config.php"; //Подключения конфига
 require_once "../config/db.php"; //Подключение базы данных
+require_once "../vendor/dbFunc.php"; //Подключение основных функций для работы с БД
 require_once "../vendor/mainFunc.php"; //Подключение основных функций
 
 //Определяем контроллер по get параметру
