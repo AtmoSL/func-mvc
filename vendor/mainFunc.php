@@ -72,6 +72,22 @@ function mysqliQueryArray($sql)
 }
 
 /**
+ * Преобразование результата SQL в массив (для 1 строчки)
+ *
+ * @param $sql
+ * @return array
+ */
+function mysqliQueryOneArray($sql)
+{
+
+    $row = mysqli_query(DB_CONNECT, $sql);
+
+    $result = mysqli_fetch_assoc($row);
+
+    return $result;
+}
+
+/**
  *  Создание строчки в БД
  *
  * @param $sql
