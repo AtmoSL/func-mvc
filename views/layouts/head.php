@@ -58,19 +58,25 @@
                     </li>
                     <li class="header__navigation__list__item">
                         <a href="/cart/"><span id="#cartCounter">
-                                <?php if (isset($_SESSION['cart']['count']) && $_SESSION['cart']['count'] > 0){ ?>
+                                <?php if (isset($_SESSION['cart']['count']) && $_SESSION['cart']['count'] > 0) { ?>
                                     (<?= $_SESSION['cart']['count'] ?>)<?php } ?></span>
                             Корзина</a>
                     </li>
-                    <li class="header__navigation__list__item">
-                        <?php if(!isset($_SESSION['user'])) {?>
-                        <a href="/register/">
-                            Регистрация</a>
-                       <?php }else{ ?>
+                    <?php if (!isset($_SESSION['user'])) { ?>
+                        <li class="header__navigation__list__item">
+                            <a href="/login/">
+                                Вход</a>
+                        </li>
+                        <li class="header__navigation__list__item">
+                            <a href="/register/">
+                                Регистрация</a>
+                        </li>
+                    <?php } else { ?>
+                        <li class="header__navigation__list__item">
                             <a href="/login/logout/">
                                 Выход</a>
-                        <?php }?>
-                    </li>
+                        </li>
+                    <?php } ?>
                 </ul>
             </nav>
         </div>

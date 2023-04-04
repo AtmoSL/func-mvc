@@ -15,3 +15,16 @@ function createUser($fullName, $email, $password)
     return $userId;
 
 }
+
+function getUserByEmail($email)
+{
+    $userIsEmpty = mysqliRowCheck(compact('email'), "users");
+
+    if (!$userIsEmpty) return false;
+
+    $sql = "SELECT * FROM `users` WHERE `email` = '$email'";
+
+    $user = mysqliQueryOneArray($sql);
+
+    return  $user;
+}
