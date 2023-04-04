@@ -268,7 +268,7 @@ nav ul ul ul {
     justify-content: center;
 }
 
-.cart__card__count__minus, .cart__card__count__plus{
+.cart__card__count__minus, .cart__card__count__plus {
     font-size: 62px;
     line-height: 51px;
     cursor: pointer;
@@ -345,10 +345,11 @@ nav ul ul ul {
 
 /* Форма регистрации */
 
-.form{
+.form {
     text-align: center;
 }
-.form__element{
+
+.form__element {
     display: flex;
     flex-direction: column;
     margin: 15px auto;
@@ -356,16 +357,18 @@ nav ul ul ul {
     text-align: left;
 }
 
-.form__element label{
+.form__element label {
     margin-bottom: 5px;
 }
-.form__element input{
+
+.form__element input {
     border-radius: 9px;
     padding: 6px 10px;
     border: 2px solid #9B92FF;
 }
 
-.form__btn{font-weight: 500;
+.form__btn {
+    font-weight: 500;
     font-size: 20px;
     line-height: 23px;
     color: #000000;
@@ -377,4 +380,11 @@ nav ul ul ul {
     text-transform: uppercase;
 
     cursor: pointer;
+}
+
+.form__message {
+    border: 1px solid #d32727;
+    background-color: #ffcccc;
+    color: #750000;
+    padding: 10px 20px;
 }
