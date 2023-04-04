@@ -345,10 +345,10 @@ nav ul ul ul {
 
 /* Форма регистрации */
 
-.registration__form{
+.form{
     text-align: center;
 }
-.registration__form__element{
+.form__element{
     display: flex;
     flex-direction: column;
     margin: 15px auto;
@@ -356,16 +356,16 @@ nav ul ul ul {
     text-align: left;
 }
 
-.registration__form__element label{
+.form__element label{
     margin-bottom: 5px;
 }
-.registration__form__element input{
+.form__element input{
     border-radius: 9px;
     padding: 6px 10px;
     border: 2px solid #9B92FF;
 }
 
-.registration__form__btn{font-weight: 500;
+.form__btn{font-weight: 500;
     font-size: 20px;
     line-height: 23px;
     color: #000000;
