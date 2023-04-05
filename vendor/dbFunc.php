@@ -40,7 +40,7 @@ function mysqliQueryOneArray($sql)
  * @param $sql
  * @return bool
  */
-function mysqliCreate($sql)
+function mysqliSql($sql)
 {
     mysqli_query(DB_CONNECT, $sql);
     $id = mysqli_insert_id(DB_CONNECT);
@@ -48,10 +48,17 @@ function mysqliCreate($sql)
     return $id;
 }
 
+/**
+ * Проверка наличия строчки в БЗ
+ *
+ * @param $conditions
+ * @param $tableName
+ * @return bool
+ */
 function mysqliRowCheck($conditions, $tableName)
 {
     $conditionRow = "";
-    foreach ($conditions as $key => $condition){
+    foreach ($conditions as $key => $condition) {
         $conditionRow .= "$key = '$condition'";
     }
 

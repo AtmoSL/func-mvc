@@ -10,7 +10,7 @@ function createUser($fullName, $email, $password)
 
     if ($userIsEmpty) return false;
 
-    $userId = mysqliCreate($sql);
+    $userId = mysqliSql($sql);
 
     return $userId;
 
