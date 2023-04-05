@@ -378,6 +378,24 @@ nav ul ul ul {
 
     color: #818181;
 }
+
+/*Страница управления товарами*/
+.products__table{
+    margin: 20px auto;
+}
+
+.products__table,.products__table td, .products__table tr{
+    border: 1px solid #000000;
+}
+
+.products__table td{
+    padding: 5px 10px;
+}
+.products__table img{
+    max-width: 150px;
+    max-height: 150px;
+}
+
 /*футер*/
 .footer {
     height: 121px;

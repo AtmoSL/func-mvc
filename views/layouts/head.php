@@ -77,6 +77,10 @@
                                 <a href="/order/all/">
                                     Все заказы</a>
                             </li>
+                            <li class="header__navigation__list__item">
+                                <a href="/products/">
+                                    Управление товарами</a>
+                            </li>
                         <?php } else { ?>
                             <li class="header__navigation__list__item">
                                 <a href="/order/myorders/">

@@ -51,3 +51,18 @@ function getChildrenForCat($id){
 
     return $result;
 }
+
+/**
+ * Получение всех категорий
+ *
+ * @return array
+ */
+function getAllCategories(){
+    $sql = "SELECT *
+            FROM `categories`
+            WHERE 1";
+
+    $result = mysqliQueryArray($sql);
+
+    return $result;
+}
