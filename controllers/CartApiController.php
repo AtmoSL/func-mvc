@@ -19,19 +19,23 @@ function addToCartAction()
     }
 
     $product = getProductById($id);
-    if (empty($product)) echo "Товаров нет";
+    if (empty($product)) die();
 
-    if (empty($_SESSION['cart']['productsId'][$id])) {
+    if (empty($_SESSION['cart']['productsId'][$id] && $product['count'] != 0)) {
         $_SESSION['cart']['productsId'][$id]['count'] = 1;
         $_SESSION['cart']['productsId'][$id]['total_price'] = $product['price'];
-    } else {
-        $_SESSION['cart']['productsId'][$id]['count']++;
-        $_SESSION['cart']['productsId'][$id]['total_price'] += $product['price'];
+        $_SESSION['cart']['count']++;
     }
 
-    $_SESSION['cart']['total_price'] += $product['price'];
+    if ($_SESSION['cart']['productsId'][$id]['count'] < $product['count']) {
 
-    $_SESSION['cart']['count']++;
+        $_SESSION['cart']['productsId'][$id]['count']++;
+        $_SESSION['cart']['productsId'][$id]['total_price'] += $product['price'];
+
+        $_SESSION['cart']['total_price'] += $product['price'];
+
+        $_SESSION['cart']['count']++;
+    }
 
     echo(json_encode($_SESSION['cart']['count']));
 }
@@ -103,17 +107,18 @@ function plusCartAction()
     $product = getProductById($id);
     if (empty($product)) echo "Товаров нет";
 
-    if (!empty($_SESSION['cart']['productsId'][$id])) {
+    if (empty($_SESSION['cart']['productsId'][$id])) die();
 
+    if ($_SESSION['cart']['productsId'][$id]['count'] < $product['count']) {
         $_SESSION['cart']['count']++;
         $_SESSION['cart']['productsId'][$id]['count']++;
         $_SESSION['cart']['productsId'][$id]['total_price'] += $product['price'];
         $_SESSION['cart']['total_price'] += $product['price'];
-
-        $productCount = $_SESSION['cart']['productsId'][$id]['count'];
-        $productTotalPrice = $_SESSION['cart']['productsId'][$id]['total_price'];
-        $cartTotalPrice = $_SESSION['cart']['total_price'];
     }
+    
+    $productCount = $_SESSION['cart']['productsId'][$id]['count'];
+    $productTotalPrice = $_SESSION['cart']['productsId'][$id]['total_price'];
+    $cartTotalPrice = $_SESSION['cart']['total_price'];
 
     $result = [
         "count" => $_SESSION['cart']['count'],

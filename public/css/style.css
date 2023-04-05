@@ -136,6 +136,7 @@ nav ul ul ul {
     box-shadow: 0px 4px 23px rgba(0, 0, 0, 0.25);
     padding: 14px 14px 24px 14px;
     margin: 20px 9px;
+    min-height: 340px;
 }
 
 .catalog__card__inner {
@@ -150,11 +151,9 @@ nav ul ul ul {
     font-size: 21px;
     line-height: 25px;
 }
-
-.catalog__card__category {
-    margin-bottom: 22px;
+.catalog__card__category{
+    margin-bottom: 10px;
 }
-
 .catalog__card__category a {
     text-transform: lowercase;
     font-weight: 300;
@@ -164,6 +163,13 @@ nav ul ul ul {
     text-decoration: none;
 }
 
+.catalog__card__count {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 72.19%;
+    color: black;
+    margin-bottom: 22px;
+}
 .catalog__card__category a:hover {
     text-decoration: underline;
 }
@@ -189,6 +195,12 @@ nav ul ul ul {
 
     cursor: pointer;
     user-select: none;
+}
+.catalog__card__ended{
+    color: #ec4d4d;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 100px;
 }
 
 /*Страница оформления заказа*/
