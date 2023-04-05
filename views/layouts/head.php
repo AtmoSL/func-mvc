@@ -71,11 +71,19 @@
                             <a href="/register/">
                                 Регистрация</a>
                         </li>
-                    <?php } else { ?>
-                        <li class="header__navigation__list__item">
-                            <a href="/order/myorders/">
-                                Мои заказы</a>
-                        </li>
+                    <?php } else {
+                        if ($_SESSION["user"]["role"] == 2) { ?>
+                            <li class="header__navigation__list__item">
+                                <a href="/order/all/">
+                                    Все заказы</a>
+                            </li>
+                        <?php } else { ?>
+                            <li class="header__navigation__list__item">
+                                <a href="/order/myorders/">
+                                    Мои заказы</a>
+                            </li>
+                        <?php } ?>
+
                         <li class="header__navigation__list__item">
                             <a href="/login/logout/">
                                 Выход</a>

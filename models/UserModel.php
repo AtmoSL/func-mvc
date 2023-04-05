@@ -16,6 +16,12 @@ function createUser($fullName, $email, $password)
 
 }
 
+/**
+ * Получение пользователя по email
+ *
+ * @param $email
+ * @return array|false
+ */
 function getUserByEmail($email)
 {
     $userIsEmpty = mysqliRowCheck(compact('email'), "users");
@@ -27,4 +33,12 @@ function getUserByEmail($email)
     $user = mysqliQueryOneArray($sql);
 
     return  $user;
+}
+
+function getUserNameAndEmail($id){
+    $sql = "SELECT `fullname`, `email` FROM `users` WHERE `id` = '$id'";
+
+    $result = mysqliQueryOneArray($sql);
+
+    return  $result;
 }

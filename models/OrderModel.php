@@ -43,9 +43,28 @@ function getOrderById($id)
     return $result;
 }
 
+/**
+ * Получение заказов пользователя
+ *
+ * @param $id
+ * @return array
+ */
 function getOrderByUserId($id)
 {
     $sql = "SELECT * FROM `orders` WHERE user_id = $id";
+
+    $result = mysqliQueryArray($sql);
+
+    return $result;
+}
+
+/**
+ * Получение всех заказов
+ *
+ * @return array
+ */
+function getAllOrders(){
+    $sql = "SELECT * FROM `orders` WHERE 1";
 
     $result = mysqliQueryArray($sql);
 

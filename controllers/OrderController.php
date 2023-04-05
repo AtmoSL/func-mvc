@@ -4,6 +4,7 @@ include "../models/OrderModel.php";
 include "../models/CategoryModel.php";
 include "../models/ProductModel.php";
 include "../models/OrderStatusModel.php";
+include "../models/UserModel.php";
 /**
  * Вывод страницы заказа
  *
@@ -76,6 +77,11 @@ function createAction()
     return true;
 }
 
+/**
+ * Вывод всех заказов пользователя
+ *
+ * @return void
+ */
 function myOrdersAction(){
     $userId = $_SESSION["user"]["id"];
 
@@ -86,4 +92,25 @@ function myOrdersAction(){
 
     $categories = getAllCategoriesForUl();
     render("myOrders", compact( "categories","orders"));
+}
+
+function allAction(){
+    if($_SESSION["user"]["role"] != 2){
+        header("location: /");
+        return false;
+    }
+
+    $userId = $_SESSION["user"]["id"];
+
+    $orders = getAllOrders();
+
+    foreach ($orders as $key => $order){
+        $orders[$key]['status_title'] = getOrderStatusTitle($order['status_id']);
+        $orders[$key]['user'] = getUserNameAndEmail($order["user_id"]);
+    }
+
+    $statuses = getAllOrderStatuses();
+
+    $categories = getAllCategoriesForUl();
+    render("allOrders", compact( "categories","orders", "statuses"));
 }
