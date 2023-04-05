@@ -26,3 +26,16 @@ function getAllOrderStatuses(){
 
     return $result;
 }
+
+/**
+ * Проверка существования статуса для заказа
+ *
+ * @param $id
+ * @return bool
+ */
+function checkStatusId($id){
+
+    $result = mysqliRowCheck(compact('id'), 'orders_statuses');
+
+    return $result;
+}

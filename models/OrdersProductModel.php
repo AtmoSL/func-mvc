@@ -14,6 +14,6 @@ function getOrderProducts($id)
 }
 function createOrderProduct($order_id, $product_id, $count, $total_price){
     $sql = "INSERT INTO `orders_products` (`id`, `order_id`, `product_id`, `count`, `total_price`) VALUES (NULL, '$order_id', '$product_id', '$count', '$total_price')";
-    mysqliCreate($sql);
+    mysqliSql($sql);
     return true;
 }

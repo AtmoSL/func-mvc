@@ -15,7 +15,7 @@ function createOrder($products, $cart)
 
     $sql = "INSERT INTO `orders` (`id`, `user_id`, `status_id`, `total_price`) VALUES (NULL, '$userId', '1', '$orderTotalPrice')";
 
-    $orderId = mysqliCreate($sql);
+    $orderId = mysqliSql($sql);
 
     foreach ($products as $key => $product) {
 
@@ -69,4 +69,21 @@ function getAllOrders(){
     $result = mysqliQueryArray($sql);
 
     return $result;
+}
+
+/**
+ * Смена статуса заказа
+ *
+ * @param $orderId
+ * @param $statusId
+ * @return bool
+ */
+function changeOrderStatus($orderId, $statusId){
+
+    $sql = "UPDATE `orders` SET `status_id` = '$statusId' WHERE `orders`.`id` = '$orderId'";
+
+    mysqliSql($sql);
+
+    return $statusId;
+
 }

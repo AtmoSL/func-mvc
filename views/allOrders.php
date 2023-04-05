@@ -37,7 +37,7 @@
                             </td>
                             <td><?= $order["total_price"] ?></td>
                             <td>
-                                <select name="status_id" id="orderStatusSelector-<?= $order["id"] ?>">
+                                <select class="order__selector" name="status_id" id="<?= $order["id"] ?>">
                                     <?php /** @var array $statuses */
                                     foreach ($statuses as $status){ ?>
                                     <option value="<?= $status["id"] ?>" <?= ($status["id"] == $order["status_id"]) ? "selected" : "" ?>><?= $status["title"] ?></option>
