@@ -45,8 +45,11 @@
                     <td>
                         Итого:
                     </td>
-                    <td  colspan="5">
+                    <td  colspan="4">
                         <?= $order["total_price"] ?> руб.
+                    </td>
+                    <td  colspan="4">
+                        <a href="/order/cancel/<?= $order["id"] ?>/">Отменить заказ</a>
                     </td>
                 </tr>
                 </tbody>
