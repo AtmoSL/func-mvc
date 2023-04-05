@@ -2,11 +2,12 @@
 
 <section class="orders">
     <div class="container">
+        <?php /** @var array $orders */
+        if (count($orders) > 0 ){ ?>
         <div class="orders__title title">
             <h2>Мои заказы</h2>
         </div>
         <div class="orders__inner">
-
             <table class="orders__table">
                 <thead>
                 <tr>
@@ -17,8 +18,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php /** @var array $orders */
-                foreach ($orders as $order) { ?>
+                <?php foreach ($orders as $order) { ?>
                     <tr>
                         <td><?= $order["created_at"] ?></td>
                         <td><?= $order["id"] ?></td>
@@ -29,8 +29,12 @@
                 <?php } ?>
                 </tbody>
             </table>
-
         </div>
+        <?php } else {?>
+            <div class="orders__message">
+                Заказов нет.
+            </div>
+        <?php } ?>
 </section>
 
 <?php require_once 'layouts/footer.php'; ?>

@@ -355,7 +355,17 @@ nav ul ul ul {
 .orders__table td{
     padding: 5px 10px;
 }
+.orders__message{
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 52px;
+    /* identical to box height */
+    text-align: center;
 
+    margin-top: 40px;
+
+    color: #818181;
+}
 /*футер*/
 .footer {
     height: 121px;
