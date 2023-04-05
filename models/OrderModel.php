@@ -8,10 +8,10 @@ include "OrdersProductModel.php";
  * @param $products
  * @return bool
  */
-function createOrder($products)
+function createOrder($products, $cart)
 {
     $userId = $_SESSION["user"]["id"];
-    $orderTotalPrice = $_SESSION['cart']['total_price'];
+    $orderTotalPrice = $cart['total_price'];
 
     $sql = "INSERT INTO `orders` (`id`, `user_id`, `status_id`, `total_price`) VALUES (NULL, '$userId', '1', '$orderTotalPrice')";
 

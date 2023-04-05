@@ -66,8 +66,9 @@ function createAction()
 
     $products = $_SESSION['cart']['productsId'];
 
-    $orderId = createOrder($products);
 
+    $orderId = createOrder($products, $_SESSION['cart']);
+    unset($_SESSION['cart']);
     header("location:/order/$orderId/");
     return true;
 }
