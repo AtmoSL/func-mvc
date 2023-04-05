@@ -43,3 +43,11 @@ function getOrderById($id)
     return $result;
 }
 
+function getOrderByUserId($id)
+{
+    $sql = "SELECT * FROM `orders` WHERE user_id = $id";
+
+    $result = mysqliQueryArray($sql);
+
+    return $result;
+}

@@ -3,6 +3,7 @@
 include "../models/OrderModel.php";
 include "../models/CategoryModel.php";
 include "../models/ProductModel.php";
+include "../models/OrderStatusModel.php";
 /**
  * Вывод страницы заказа
  *
@@ -43,6 +44,8 @@ function indexAction()
         $products[] = $product;
     }
 
+    $order['status_title'] = getOrderStatusTitle($order["status_id"]);
+
     $categories = getAllCategoriesForUl();
     render("order", compact( "categories", "products", "order"));
 }
@@ -71,4 +74,16 @@ function createAction()
     unset($_SESSION['cart']);
     header("location:/order/$orderId/");
     return true;
+}
+
+function myOrdersAction(){
+    $userId = $_SESSION["user"]["id"];
+
+    $orders = getOrderByUserId($userId);
+    foreach ($orders as $key => $order){
+        $orders[$key]['status_title'] = getOrderStatusTitle($order['status_id']);
+    }
+
+    $categories = getAllCategoriesForUl();
+    render("myOrders", compact( "categories","orders"));
 }

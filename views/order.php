@@ -38,7 +38,7 @@
                         Статус заказа:
                     </td>
                     <td  colspan="5">
-                        Новый
+                         <?= $order['status_title'] ?>
                     </td>
                 </tr>
                 <tr>

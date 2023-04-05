@@ -342,6 +342,20 @@ nav ul ul ul {
     padding: 5px 10px;
 }
 
+/*Страница всех заказов пользователя*/
+
+.orders__table{
+    margin: 20px auto;
+}
+
+.orders__table,.orders__table td, .orders__table tr{
+    border: 1px solid #000000;
+}
+
+.orders__table td{
+    padding: 5px 10px;
+}
+
 /*футер*/
 .footer {
     height: 121px;

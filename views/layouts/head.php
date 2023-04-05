@@ -73,6 +73,10 @@
                         </li>
                     <?php } else { ?>
                         <li class="header__navigation__list__item">
+                            <a href="/order/myorders/">
+                                Мои заказы</a>
+                        </li>
+                        <li class="header__navigation__list__item">
                             <a href="/login/logout/">
                                 Выход</a>
                         </li>
