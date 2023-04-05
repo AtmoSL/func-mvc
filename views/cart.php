@@ -20,8 +20,8 @@
                         <div class="cart__card__category">
                             <a href="/category/<?= $cartProduct['category']['id'] ?>/"><?= $cartProduct['category']['title'] ?></a>
                         </div>
-                        <div class="cart__card__price">
-                            <?= $cartProduct['price'] ?><span> руб.</span>
+                        <div class="cart__card__price" id = "productTotalPrice-<?= $cartProduct['id'] ?>">
+                            <?= $cartProduct['total_price'] ?><span> руб.</span>
                         </div>
                     </div>
                     <div class="cart__card__actions">
@@ -46,6 +46,10 @@
                 Корзина пуста
             </div>
         <?php } else { ?>
+                <div class="cart__total__price" id="cartTotalPriceParent">
+                    Итого: <span id="cartTotalPrice"><?= /** @var integer $cartTotalPrice */
+                        $cartTotalPrice ?></span> руб.
+                </div>
             <a href="#" class="cart__create__btn" id="makeOrderButton">Оформить заказ</a>
         <?php } ?>
 

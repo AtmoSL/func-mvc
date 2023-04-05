@@ -7,6 +7,7 @@ const cartMinusButtons = document.querySelectorAll(".cart__card__count__minus");
 const cartPlusButtons = document.querySelectorAll(".cart__card__count__plus"); //Кнопка увеличения кол-ва товаров
 const makeOrderButton = document.getElementById("makeOrderButton");
 const cartMessage = document.createElement("div");
+const cartTotalPrice = document.getElementById("cartTotalPrice");
 /**
  * Добавление товара в корзину
  */
@@ -44,7 +45,12 @@ cartPlusButtons.forEach(function (cartPlusButton) {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
+
                 document.getElementById("productCountText-" + event.target.id).textContent = data["productCount"] + " шт.";
+                document.getElementById("productTotalPrice-" + event.target.id).textContent = data["productTotalPrice"] + " руб.";
+
+                cartTotalPrice.textContent = data["cartTotalPrice"];
+
                 cartCounter.textContent = "(" + data["count"] + ")";
             });
     });
@@ -61,9 +67,14 @@ cartMinusButtons.forEach(function (cartMinusButton) {
             .then((data) => {
                 console.log(data);
                 if (data["productCount"] === 0) {
-                    deleteProductFromCart(data["count"], event)
+                    deleteProductFromCart(data, event)
                 } else {
+
+                    document.getElementById("productTotalPrice-" + event.target.id).textContent = data["productTotalPrice"] + " руб.";
                     document.getElementById("productCountText-" + event.target.id).textContent = data["productCount"] + " шт.";
+
+                    cartTotalPrice.textContent = data["cartTotalPrice"];
+
                     cartCounter.textContent = "(" + data["count"] + ")";
                 }
             });
@@ -76,11 +87,13 @@ cartMinusButtons.forEach(function (cartMinusButton) {
  * @param event
  */
 function deleteProductFromCart(data, event) {
-    cartCounter.textContent = "(" + data + ")";
+    cartCounter.textContent = "(" + data["count"] + ")";
     document.getElementById("cartCard-" + event.target.id).remove();
     document.getElementById("cartSeparator-" + event.target.id).remove();
+    cartTotalPrice.textContent = data["cartTotalPrice"];
     if (!data) {
         cartCounter.textContent = "";
+        document.getElementById("cartTotalPriceParent").remove();
         makeOrderButton.remove();
         cartMessage.className = "cart__message";
         cartMessage.innerHTML = "Корзина пуста";

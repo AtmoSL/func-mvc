@@ -18,9 +18,11 @@ function indexAction(){
 
     foreach($cartProducts as $key => $cartProduct){
         $cartProducts[$key]['count'] = $_SESSION['cart']['productsId'][$cartProduct['id']]['count'];
+        $cartProducts[$key]['total_price'] = $_SESSION['cart']['productsId'][$cartProduct['id']]['total_price'];
     }
 
-    $categories = getAllCategoriesForUl();
+    $cartTotalPrice = $_SESSION['cart']['total_price'];
 
-    render("cart", compact('categories', 'cartProducts'));
+    $categories = getAllCategoriesForUl();
+    render("cart", compact('categories', 'cartProducts', 'cartTotalPrice'));
 }
