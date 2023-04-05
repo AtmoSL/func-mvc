@@ -50,7 +50,7 @@
                     Итого: <span id="cartTotalPrice"><?= /** @var integer $cartTotalPrice */
                         $cartTotalPrice ?></span> руб.
                 </div>
-            <a href="#" class="cart__create__btn" id="makeOrderButton">Оформить заказ</a>
+            <a href="/order/create/" class="cart__create__btn" id="makeOrderButton">Оформить заказ</a>
         <?php } ?>
 
     </div>

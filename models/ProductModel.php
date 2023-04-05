@@ -66,12 +66,18 @@ function getProductsByIds($ids = []){
     return $products;
 }
 
+/**
+ * Получение товара по id
+ *
+ * @param $id
+ * @return array|false
+ */
 function getProductById($id){
     $sql = "SELECT * FROM `products` WHERE id = $id";
 
     $product = mysqliQueryOneArray($sql);
 
-    if (!count($product)) return false;
-    return $product[0];
+    if (!isset($product["id"])) return false;
+    return $product;
 
 }
