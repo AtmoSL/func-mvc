@@ -21,10 +21,16 @@ function addToCartAction()
     $product = getProductById($id);
     if (empty($product)) die();
 
-    if (empty($_SESSION['cart']['productsId'][$id] && $product['count'] != 0)) {
+    if (empty($_SESSION['cart']['productsId'][$id]) && $product['count'] != 0) {
+
         $_SESSION['cart']['productsId'][$id]['count'] = 1;
         $_SESSION['cart']['productsId'][$id]['total_price'] = $product['price'];
+
+        $_SESSION['cart']['total_price'] += $product['price'];
         $_SESSION['cart']['count']++;
+
+        echo(json_encode($_SESSION['cart']['count']));
+        die();
     }
 
     if ($_SESSION['cart']['productsId'][$id]['count'] < $product['count']) {
@@ -35,9 +41,11 @@ function addToCartAction()
         $_SESSION['cart']['total_price'] += $product['price'];
 
         $_SESSION['cart']['count']++;
+
+        echo(json_encode($_SESSION['cart']['count']));
+        die();
     }
 
-    echo(json_encode($_SESSION['cart']['count']));
 }
 
 /**
@@ -115,7 +123,7 @@ function plusCartAction()
         $_SESSION['cart']['productsId'][$id]['total_price'] += $product['price'];
         $_SESSION['cart']['total_price'] += $product['price'];
     }
-    
+
     $productCount = $_SESSION['cart']['productsId'][$id]['count'];
     $productTotalPrice = $_SESSION['cart']['productsId'][$id]['total_price'];
     $cartTotalPrice = $_SESSION['cart']['total_price'];
