@@ -73,6 +73,15 @@ function createAction()
 
     $products = $_SESSION['cart']['productsId'];
 
+    foreach ($products as $key => $product){
+        $productCount = getProductCount($key);
+        if($productCount >= $_SESSION['cart']['productsId'][$key]["count"]){
+            $newCount = $productCount - $_SESSION['cart']['productsId'][$key]["count"];
+            updateProductCount($key , $newCount);
+        }else{
+            return false;
+        }
+    }
 
     $orderId = createOrder($products, $_SESSION['cart']);
     unset($_SESSION['cart']);

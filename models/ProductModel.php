@@ -5,7 +5,8 @@
  *
  * @return array
  */
-function getAllProducts(){
+function getAllProducts()
+{
     $sql = "SELECT * FROM `products`";
 
     $result = mysqliQueryArray($sql);
@@ -19,10 +20,11 @@ function getAllProducts(){
  *
  * @return array
  */
-function getAllProductsWithCategories(){
+function getAllProductsWithCategories()
+{
     $products = getAllProducts();
 
-    foreach ($products as $key => $product){
+    foreach ($products as $key => $product) {
         $products[$key]["category"] = getCategory($product["category_id"]);
     }
 
@@ -35,12 +37,13 @@ function getAllProductsWithCategories(){
  * @param $categoryId
  * @return array
  */
-function getProductsByCategory($categoryId){
+function getProductsByCategory($categoryId)
+{
     $sql = "SELECT * FROM `products` WHERE `category_id` = $categoryId ORDER BY id DESC";
 
     $products = mysqliQueryArray($sql);
 
-    foreach ($products as $key => $product){
+    foreach ($products as $key => $product) {
         $products[$key]["category"] = getCategory($product["category_id"]);
     }
 
@@ -53,13 +56,14 @@ function getProductsByCategory($categoryId){
  * @param $ids
  * @return array
  */
-function getProductsByIds($ids = []){
+function getProductsByIds($ids = [])
+{
     $ids_str = implode(',', $ids);
     $sql = "SELECT * FROM `products` WHERE id in ($ids_str)";
 
     $products = mysqliQueryArray($sql);
 
-    foreach ($products as $key => $product){
+    foreach ($products as $key => $product) {
         $products[$key]["category"] = getCategory($product["category_id"]);
     }
 
@@ -72,12 +76,37 @@ function getProductsByIds($ids = []){
  * @param $id
  * @return array|false
  */
-function getProductById($id){
+function getProductById($id)
+{
     $sql = "SELECT * FROM `products` WHERE id = $id";
 
     $product = mysqliQueryOneArray($sql);
 
     if (!isset($product["id"])) return false;
     return $product;
+}
 
+/**
+ * Получение количества товара по id
+ *
+ * @param $key
+ * @return mixed
+ */
+function getProductCount($key)
+{
+    $sql = "SELECT `count` FROM `products` WHERE id = '$key'";
+
+    $result = mysqliQueryOneArray($sql);
+
+    return $result["count"];
+}
+
+
+function updateProductCount($id, $count)
+{
+    $sql = "UPDATE `products` SET `count` = '$count' WHERE `id` = '$id'";
+
+    mysqliSql($sql);
+
+    return true;
 }
