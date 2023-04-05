@@ -106,6 +106,11 @@ function myOrdersAction(){
     render("myOrders", compact( "categories","orders"));
 }
 
+/**
+ * Все заказы для админа
+ *
+ * @return false|void
+ */
 function allAction(){
     if($_SESSION["user"]["role"] != 2){
         header("location: /");
@@ -125,4 +130,40 @@ function allAction(){
 
     $categories = getAllCategoriesForUl();
     render("allOrders", compact( "categories","orders", "statuses"));
+}
+
+/**
+ * Отмена заказа
+ *
+ * @return false|void
+ */
+function cancelAction(){
+    $id = isset($_GET['id']) ? $_GET['id'] : null;
+    $order = getOrderById($id);
+
+    if($order["user_id"] != $_SESSION["user"]["id"] && $_SESSION["user"]["id"]!=2){
+        debug("Не тот юзер");
+        header("location: /order/myorders/");
+        return false;
+    }
+
+    $orderProducts = getOrderProducts($order["id"]);
+
+    foreach ($orderProducts as $orderProduct){
+        $product = getProductById($orderProduct["product_id"]);
+
+        $newCount = $product["count"] + $orderProduct["count"];
+
+        updateProductCount($orderProduct["product_id"], $newCount);
+    }
+
+    $statusId = 3;
+
+    $newStatusId = changeOrderStatus($order["id"], $statusId);
+
+    if($newStatusId != 3) return false;
+
+    header("location: /order/myorders/");
+    die();
+
 }
