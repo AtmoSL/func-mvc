@@ -19,11 +19,10 @@
                     </thead>
 
                     <tbody>
-                    <form action="">
+                    <form action="/products/create/" method="post" enctype="multipart/form-data">
                         <tr>
                             <td></td>
-                            <td>
-                            </td>
+                            <td><input type="file" name="photo_path" id="photo_path"></td>
                             <td>
                                 <input type="text" name="title" id="title" value="">
                             </td>

@@ -110,3 +110,19 @@ function updateProductCount($id, $count)
 
     return true;
 }
+
+/**
+ * Создание товара
+ *
+ * @param array $product
+ * @return bool
+ */
+function createProduct($product){
+    extract($product);
+
+    $sql = "INSERT INTO `products` (`id`, `category_id`, `title`, `price`, `photo_path`, `count`) VALUES (NULL, '$category_id', '$title', '$price', '$photo_path', '$count')";
+
+    mysqliSql($sql);
+
+    return true;
+}
