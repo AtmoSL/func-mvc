@@ -26,9 +26,12 @@ function indexAction()
         header("location: /");
         return false;
     }
-    if ($order["user_id"] != $_SESSION["user"]["id"]) {
-        header("location: /");
-        return false;
+
+    if($_SESSION["user"]["role"] != 2){
+        if ($order["user_id"] != $_SESSION["user"]["id"]) {
+            header("location: /");
+            return false;
+        }
     }
 
     $orderProducts = getOrderProducts($order["id"]);
