@@ -73,14 +73,19 @@
                         </li>
                     <?php } else {
                         if ($_SESSION["user"]["role"] == 2) { ?>
-                            <li class="header__navigation__list__item">
-                                <a href="/order/all/">
-                                    Все заказы</a>
-                            </li>
-                            <li class="header__navigation__list__item">
-                                <a href="/products/">
-                                    Управление товарами</a>
-                            </li>
+                                <li class="header__navigation__list__item">
+                                    Админка v
+                                    <ul>
+                                        <li >
+                                            <a href="/order/all/">
+                                                Все заказы</a>
+                                        </li>
+                                        <li >
+                                            <a href="/products/">
+                                                Управление товарами</a>
+                                        </li>
+                                    </ul>
+                                </li>
                         <?php } else { ?>
                             <li class="header__navigation__list__item">
                                 <a href="/order/myorders/">
