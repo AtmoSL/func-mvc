@@ -126,3 +126,26 @@ function createProduct($product){
 
     return true;
 }
+
+/**
+ * Изменение товара
+ *
+ * @param $product
+ * @param $id
+ * @return bool
+ */
+function updateProduct($product, $id){
+    extract($product);
+    $sql = "UPDATE `products` SET 
+                      `category_id` = '$category_id', 
+                      `title` = '$title', 
+                      `price` = '$price', 
+                      `photo_path` = '$photo_path', 
+                      `count` = '$count' 
+                  WHERE `products`.`id` = '$id'";
+
+    $result = mysqliSql($sql);
+
+    return $result;
+}
+

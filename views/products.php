@@ -43,13 +43,14 @@
                     </form>
                     <?php /** @var array $products */
                     foreach ($products as $product) { ?>
-                        <form action="/products/update/" method="post">
+                        <form action="/products/update/<?= $product["id"] ?>/" method="post" enctype="multipart/form-data">
                             <tr>
 
                                 <td><?= $product["id"] ?></td>
                                 <td>
                                     <img src="/img/products/<?= $product['photo_path'] ?>"
                                          alt="<?= $product['title'] ?>">
+                                    <input type="file" name="photo_path" id="photo_path">
                                 </td>
                                 <td>
                                     <input type="text" name="title" id="title" value="<?= $product['title'] ?>">
