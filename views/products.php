@@ -28,23 +28,25 @@
                             </td>
                             <td>
 
-                                <select class="products__selector" name="category_id" >
+                                <select class="products__selector" name="category_id">
                                     <?php /** @var array $productCategories */
-                                    foreach ($productCategories as $productCategory){ ?>
-                                        <option value="<?= $productCategory["id"] ?>" ><?= $productCategory["title"] ?></option>
+                                    foreach ($productCategories as $productCategory) { ?>
+                                        <option value="<?= $productCategory["id"] ?>"><?= $productCategory["title"] ?></option>
                                     <?php } ?>
                                 </select>
                             </td>
                             <td><input type="text" name="count" id="count" value=""></td>
                             <td><input type="text" name="price" id="price" value=""></td>
                             <td>
-                                <button type="submit">Создать</button></td>
+                                <button type="submit">Создать</button>
+                            </td>
                         </tr>
                     </form>
                     <?php /** @var array $products */
                     foreach ($products as $product) { ?>
-                        <form action="/products/update/<?= $product["id"] ?>/" method="post" enctype="multipart/form-data">
-                            <tr>
+                        <form action="/products/update/<?= $product["id"] ?>/" method="post"
+                              enctype="multipart/form-data" >
+                            <tr id="productRow-<?= $product["id"] ?>">
 
                                 <td><?= $product["id"] ?></td>
                                 <td>
@@ -59,7 +61,7 @@
 
                                     <select class="products__selector" name="category_id" id="<?= $product["id"] ?>">
                                         <?php /** @var array $productCategories */
-                                        foreach ($productCategories as $productCategory){ ?>
+                                        foreach ($productCategories as $productCategory) { ?>
                                             <option value="<?= $productCategory["id"] ?>" <?= ($productCategory["id"] == $product["category_id"]) ? "selected" : "" ?>><?= $productCategory["title"] ?></option>
                                         <?php } ?>
                                     </select>

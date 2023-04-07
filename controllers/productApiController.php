@@ -2,10 +2,16 @@
 
 include '../models/ProductModel.php';
 
+/**
+ * Удаление товара
+ *
+ * @return void
+ */
 function deleteAction(){
     $id = isset($_GET['id']) ? $_GET['id'] : null;
 
     if ($_SESSION["user"]["role"] != 2) {
+        echo json_encode("Пользователь не подходит");
         die();
     }
 
@@ -18,4 +24,5 @@ function deleteAction(){
 
 
     echo json_encode("Товар удалён");
+    die();
 }
