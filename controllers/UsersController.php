@@ -13,9 +13,11 @@ function indexAction(){
         die();
     }
 
+    $admins = getAllAdmins();
+
     $categories = getAllCategoriesForUl();
 
-    render("users", compact( "categories"));
+    render("users", compact( "categories", "admins"));
 }
 
 /**

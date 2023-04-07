@@ -57,3 +57,16 @@ function updateUserRole($user_id, $role_id){
 
     return true;
 }
+
+/**
+ * Получение списка всех администраторов
+ *
+ * @return array
+ */
+function getAllAdmins(){
+    $sql = "SELECT `id`, `email` FROM `users` WHERE `role_id` = '2' ";
+
+    $result = mysqliQueryArray($sql);
+
+    return $result;
+}

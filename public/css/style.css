@@ -483,3 +483,26 @@ nav ul ul ul {
     color: #750000;
     padding: 10px 20px;
 }
+
+/* Страница управления правами пользователей */
+
+.users__admin__table {
+    margin: 20px auto;
+}
+
+.users__admin__table, .users__admin__table td, .users__admin__table tr {
+    border: 1px solid #000000;
+}
+
+.users__admin__table td {
+    padding: 5px 10px;
+}
+
+.users__admin__delete__btn {
+    padding: 5px 10px;
+    background-color: #f56060;
+    cursor: pointer;
+    margin: 30px 0;
+    width: 150px;
+    text-align: center;
+}
