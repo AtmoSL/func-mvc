@@ -143,7 +143,13 @@ nav ul ul ul {
 }
 
 .catalog__card__image {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.catalog__card__image img{
+    max-width: 160px;
+    max-height: 160px;
 }
 
 .catalog__card__title {
