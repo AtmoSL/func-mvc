@@ -42,3 +42,18 @@ function getUserNameAndEmail($id){
 
     return  $result;
 }
+
+/**
+ * Смена роли пользователя
+ *
+ * @param $user_id
+ * @param $role_id
+ * @return true
+ */
+function updateUserRole($user_id, $role_id){
+    $sql = "UPDATE `users` SET `role_id` = '$role_id' WHERE `users`.`id` = '$user_id'";
+
+    mysqliSql($sql);
+
+    return true;
+}

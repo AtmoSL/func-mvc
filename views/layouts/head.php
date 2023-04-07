@@ -84,6 +84,11 @@
                                             <a href="/products/">
                                                 Управление товарами</a>
                                         </li>
+                                        <li>
+                                            <a href="/users/">
+                                                Права пользователей
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                         <?php } else { ?>
