@@ -70,3 +70,15 @@ function getAllAdmins(){
 
     return $result;
 }
+
+function getUserById($id){
+    $userIsEmpty = mysqliRowCheck(compact('id'), "users");
+
+    if (!$userIsEmpty) return false;
+
+    $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
+
+    $user = mysqliQueryOneArray($sql);
+
+    return  $user;
+}

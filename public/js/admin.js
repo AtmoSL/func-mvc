@@ -1,7 +1,8 @@
 console.log('Я подключён (admin)');
 
 const orderStatusSelectors = document.querySelectorAll(".order__selector");
-const productDeleteBtns = document.querySelectorAll(".product__delete__btn");
+const productDeleteBtns = document.querySelectorAll(".product__delete__btn")
+const deleteAdminBtns = document.querySelectorAll(".users__admin__delete__btn");
 
 /**
  * Смена статуса заказа
@@ -30,6 +31,9 @@ orderStatusSelectors.forEach(function (orderStatusSelector) {
 });
 
 
+/**
+ * Удаление товара
+ */
 productDeleteBtns.forEach(function (productDeleteBtn) {
     productDeleteBtn.addEventListener("click", function (event) {
         if (confirm("Вы точно хотите удалить товар №" + event.target.id + "?")) {
@@ -38,6 +42,22 @@ productDeleteBtns.forEach(function (productDeleteBtn) {
                 .then((data)=>{
                     console.log(data);
                     document.getElementById("productRow-"+ event.target.id).remove();
+                });
+        }
+    });
+});
+
+/**
+ * Удаление администратора
+ */
+deleteAdminBtns.forEach(function (deleteAdminBtn){
+    deleteAdminBtn.addEventListener("click",function (event){
+        if(confirm("Вы точно хотите удалить администратора?")){
+            fetch(mainUrl + "usersapi/deleteadmin/" + event.target.id +"/")
+                .then((response)=>response.json())
+                .then((data) =>{
+                    console.log(data);
+                    document.getElementById("adminRow-" + event.target.id).remove();
                 });
         }
     });

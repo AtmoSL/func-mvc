@@ -34,7 +34,7 @@
             <tbody>
             <?php /** @var array $admins */
             foreach ($admins as $admin) { ?>
-                <tr>
+                <tr id = "adminRow-<?=$admin['id']?>">
                     <td>
                         <?= $admin['email'] ?>
                     </td>
