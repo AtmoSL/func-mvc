@@ -149,3 +149,25 @@ function updateProduct($product, $id){
     return $result;
 }
 
+/**
+ * Удаление товара
+ *
+ * @param $id
+ * @return bool
+ */
+function productDelete($id){
+    $sql = "DELETE FROM products WHERE `products`.`id` = '$id'";
+
+    mysqliSql($sql);
+
+    return true;
+}
+
+
+function getProductPhotoPath($id){
+    $sql = "SELECT `photo_path` FROM `products` WHERE id = '$id'";
+
+    $result = mysqliQueryOneArray($sql);
+
+    return $result['photo_path'];
+}

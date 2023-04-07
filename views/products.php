@@ -67,7 +67,12 @@
                                 <td><input type="text" name="count" id="count" value="<?= $product['count'] ?>"></td>
                                 <td><input type="text" name="price" id="price" value="<?= $product['price'] ?>"></td>
                                 <td>
-                                    <button type="submit">Изменить</button></td>
+                                    <div class="product__delete__btn" id="<?= $product["id"] ?>">
+                                        Удалить
+                                    </div>
+                                    <button type="submit">Изменить</button>
+                                </td>
+
                             </tr>
                         </form>
                     <?php } ?>

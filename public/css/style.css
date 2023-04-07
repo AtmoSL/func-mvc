@@ -151,9 +151,11 @@ nav ul ul ul {
     font-size: 21px;
     line-height: 25px;
 }
-.catalog__card__category{
+
+.catalog__card__category {
     margin-bottom: 10px;
 }
+
 .catalog__card__category a {
     text-transform: lowercase;
     font-weight: 300;
@@ -170,6 +172,7 @@ nav ul ul ul {
     color: black;
     margin-bottom: 22px;
 }
+
 .catalog__card__category a:hover {
     text-decoration: underline;
 }
@@ -196,7 +199,8 @@ nav ul ul ul {
     cursor: pointer;
     user-select: none;
 }
-.catalog__card__ended{
+
+.catalog__card__ended {
     color: #ec4d4d;
     text-transform: uppercase;
     text-align: center;
@@ -342,32 +346,33 @@ nav ul ul ul {
 
 /*Страница заказа*/
 
-.order__table{
+.order__table {
     margin: 20px auto;
 }
 
-.order__table,.order__table td, .order__table tr{
+.order__table, .order__table td, .order__table tr {
     border: 1px solid #000000;
 }
 
-.order__table td{
+.order__table td {
     padding: 5px 10px;
 }
 
 /*Страница всех заказов пользователя*/
 
-.orders__table{
+.orders__table {
     margin: 20px auto;
 }
 
-.orders__table,.orders__table td, .orders__table tr{
+.orders__table, .orders__table td, .orders__table tr {
     border: 1px solid #000000;
 }
 
-.orders__table td{
+.orders__table td {
     padding: 5px 10px;
 }
-.orders__message{
+
+.orders__message {
     font-weight: 700;
     font-size: 44px;
     line-height: 52px;
@@ -380,20 +385,28 @@ nav ul ul ul {
 }
 
 /*Страница управления товарами*/
-.products__table{
+.products__table {
     margin: 20px auto;
 }
 
-.products__table,.products__table td, .products__table tr{
+.products__table, .products__table td, .products__table tr {
     border: 1px solid #000000;
 }
 
-.products__table td{
+.products__table td {
     padding: 5px 10px;
 }
-.products__table img{
+
+.products__table img {
     max-width: 150px;
     max-height: 150px;
+}
+
+.product__delete__btn {
+    padding: 5px 10px;
+    background-color: #f56060;
+    cursor: pointer;
+    margin: 30px 0;
 }
 
 /*футер*/

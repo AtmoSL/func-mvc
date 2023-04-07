@@ -1,7 +1,7 @@
 console.log('Я подключён (admin)');
 
 const orderStatusSelectors = document.querySelectorAll(".order__selector");
-
+const productDeleteBtns = document.querySelectorAll(".product__delete__btn");
 
 /**
  * Смена статуса заказа
@@ -22,9 +22,23 @@ orderStatusSelectors.forEach(function (orderStatusSelector) {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                if(data === "3"){
-                    document.getElementById('order-status-'+ event.target.id).innerHTML = "Отменён";
+                if (data === "3") {
+                    document.getElementById('order-status-' + event.target.id).innerHTML = "Отменён";
                 }
             });
+    });
+});
+
+
+productDeleteBtns.forEach(function (productDeleteBtn) {
+    productDeleteBtn.addEventListener("click", function (event) {
+        if (confirm("Вы точно хотите удалить товар №" + event.target.id + "?")) {
+            fetch(mainUrl + "productapi/delete/" + event.target.id + "/")
+                .then((response)=>response.json())
+                .then((data)=>{
+                    console.log(data);
+                    document.getElementById("productRow-"+ event.target.id).remove();
+                });
+        }
     });
 });
