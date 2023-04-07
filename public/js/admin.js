@@ -1,7 +1,11 @@
 console.log('Я подключён (admin)');
 
-orderStatusSelectors = document.querySelectorAll(".order__selector");
+const orderStatusSelectors = document.querySelectorAll(".order__selector");
 
+
+/**
+ * Смена статуса заказа
+ */
 orderStatusSelectors.forEach(function (orderStatusSelector) {
     orderStatusSelector.addEventListener('change', function (event) {
         console.log("Селектор изменён " + JSON.stringify({
