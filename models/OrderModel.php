@@ -87,3 +87,16 @@ function changeOrderStatus($orderId, $statusId){
     return $statusId;
 
 }
+
+/**
+ * Узнать id статуса у заказа
+ * @param $id
+ * @return mixed
+ */
+function getOrderStatusId($id){
+    $sql = "SELECT `status_id` FROM `orders` WHERE `id` = '$id'";
+
+    $result = mysqliQueryOneArray($sql);
+
+    return $result['status_id'];
+}

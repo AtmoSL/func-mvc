@@ -36,13 +36,17 @@
                                 </table>
                             </td>
                             <td><?= $order["total_price"] ?></td>
-                            <td>
-                                <select class="order__selector" name="status_id" id="<?= $order["id"] ?>">
-                                    <?php /** @var array $statuses */
-                                    foreach ($statuses as $status){ ?>
-                                    <option value="<?= $status["id"] ?>" <?= ($status["id"] == $order["status_id"]) ? "selected" : "" ?>><?= $status["title"] ?></option>
-                                    <?php } ?>
-                                </select>
+                            <td id="order-status-<?= $order["id"] ?>">
+                                <?php if ($order["status_id"] == 3) { ?>
+                                    Отменён
+                                <?php } else { ?>
+                                    <select class="order__selector" name="status_id" id="<?= $order["id"] ?>">
+                                        <?php /** @var array $statuses */
+                                        foreach ($statuses as $status) { ?>
+                                            <option value="<?= $status["id"] ?>" <?= ($status["id"] == $order["status_id"]) ? "selected" : "" ?>><?= $status["title"] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                <?php } ?>
                             </td>
                             <td><a href="/order/<?= $order["id"] ?>/">Перейти к заказу</a></td>
                         </tr>

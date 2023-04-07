@@ -18,6 +18,9 @@ orderStatusSelectors.forEach(function (orderStatusSelector) {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
+                if(data === "3"){
+                    document.getElementById('order-status-'+ event.target.id).innerHTML = "Отменён";
+                }
             });
     });
 });
