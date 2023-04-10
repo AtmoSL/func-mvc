@@ -5,13 +5,14 @@
  *
  * @return array
  */
-function getAllCategoriesForUl(){
+function getAllCategoriesForUl()
+{
 
     $categories = getAllParentsCategories();
 
-    foreach ($categories as &$category){
+    foreach ($categories as &$category) {
         $children = getChildrenForCat($category['id']);
-        if($children){
+        if ($children) {
             $category['children'] = $children;
         }
     }
@@ -25,7 +26,8 @@ function getAllCategoriesForUl(){
  * @param $id
  * @return array
  */
-function getCategory($id){
+function getCategory($id)
+{
     $sql = "SELECT * FROM `categories` WHERE id = $id";
 
     $result = mysqliQueryOneArray($sql);
@@ -39,7 +41,8 @@ function getCategory($id){
  * @param $id
  * @return array
  */
-function getChildrenForCat($id){
+function getChildrenForCat($id)
+{
     $sql = "SELECT *
             FROM `categories`
             WHERE `parent_id` = '$id'";
@@ -54,7 +57,8 @@ function getChildrenForCat($id){
  *
  * @return array
  */
-function getAllCategories(){
+function getAllCategories()
+{
     $sql = "SELECT *
             FROM `categories`
             WHERE `id` > '1'";
@@ -70,7 +74,8 @@ function getAllCategories(){
  *
  * @return array
  */
-function getAllParentsCategories(){
+function getAllParentsCategories()
+{
     $sql = "SELECT *
             FROM `categories`
             WHERE `parent_id` = '0'";
@@ -78,4 +83,61 @@ function getAllParentsCategories(){
     $result = mysqliQueryArray($sql);
 
     return $result;
+}
+
+/**
+ * Создание категории
+ *
+ * @param $category
+ * @return true
+ */
+function createCategory($category)
+{
+    extract($category);
+
+    $sql = "INSERT INTO `categories` (`id`, `parent_id`, `title`) VALUES (NULL, '$parent_id', '$title')";
+
+    mysqliSql($sql);
+
+    return true;
+}
+
+/**
+ * Является ли категория родительской
+ *
+ * @param $categoryId
+ * @return bool
+ */
+function isItParentCategory($categoryId)
+{
+    $sql = "SELECT `parent_id` FROM `categories` WHERE `id` = '$categoryId'";
+
+    $result = mysqliQueryOneArray($sql);
+
+    if ($result['parent_id'] == 0) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
+function validationCategoryForCreate()
+{
+    if (!isset($_POST)) {
+        return false;
+    }
+
+    if (!isset($_POST['title']) && trim($_POST['title']) != '') {
+        return false;
+    }
+
+    if (!isset($_POST['parent_id'])) {
+        return false;
+    }
+
+    if (!isItParentCategory($_POST['parent_id'])) {
+        return false;
+    }
+    return true;
 }
