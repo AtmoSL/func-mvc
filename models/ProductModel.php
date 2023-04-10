@@ -222,22 +222,26 @@ function validateProductForCreate()
 function validateProductForUpdate($id){
 
     if (!isset($_POST)) {
+        debug("нет post");
         return false;
     }
     if (!isset($_POST["title"]) || !isset($_POST["category_id"]) || !isset($_POST["count"]) || !isset($_POST["price"])) {
+        debug("нет какого-то post");
         return false;
     }
     if (!is_numeric($_POST['count']) || ltrim($_POST["count"], "0") < 0) {
+        debug("количество не подходит");
         return false;
     }
     if (!is_numeric($_POST['price']) || ltrim($_POST["price"], "0") < 0) {
+        debug("цена не подходит");
         return false;
     }
 
     $product = getProductById($id);
 
 
-    if (isset($_FILES['photo_path'])) {
+    if (isset($_FILES['photo_path']) && $_FILES['photo_path']['name']!='') {
         $filename = basename($_FILES['photo_path']['name']);
         $file = $_FILES['photo_path'];
         $extension = strtolower(substr($filename, strrpos($filename, '.') + 1));

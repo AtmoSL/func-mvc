@@ -89,8 +89,7 @@ function updateAction()
     }
 
 
-    if (isset($_FILES['photo_path'])) {
-        //Загрузка и валидация файла
+    if (isset($_FILES['photo_path']) && $_FILES['photo_path']['name'] != '') {
         $filename = basename($_FILES['photo_path']['name']);
         $file = $_FILES['photo_path'];
         $extension = strtolower(substr($filename, strrpos($filename, '.') + 1));
