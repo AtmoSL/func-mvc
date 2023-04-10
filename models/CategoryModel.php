@@ -8,18 +8,16 @@
 function getAllCategoriesForUl(){
     $sql = "SELECT * FROM `categories` WHERE `parent_id` = 0";
 
-    $rs = mysqli_query(DB_CONNECT, $sql);
+    $categories = mysqliQueryArray($sql);
 
-    $result = [];
-    while ($row = mysqli_fetch_assoc($rs)){
-        $children = getChildrenForCat($row['id']);
+    foreach ($categories as &$category){
+        $children = getChildrenForCat($category['id']);
         if($children){
-            $row['children'] = $children;
+            $category['children'] = $children;
         }
-        $result[] = $row;
     }
 
-    return $result;
+    return $categories;
 }
 
 /**
