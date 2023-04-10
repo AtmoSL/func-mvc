@@ -3,7 +3,7 @@
     <!-- Каталог -->
     <section class="category">
         <div class="container">
-            <div class="catalog__title">
+            <div class="category__title title">
                 <h2><?= /** @var array $category */
                     $category["title"] ?></h2>
             </div>
@@ -11,11 +11,16 @@
             <?php if(!empty($children)){ ?>
 
             <div class="category__children">
-                <?php foreach ($children as $catChild){?>
-                        <div class="category__children__title">
-                            <a href="/category/<?= $catChild["id"] ?>/"><?= $catChild["title"] ?></a> <span>|</span>
-                        </div>
-                <?php } ?>
+                <div class="category__children__title">
+                    Дочерние категории:
+                </div>
+                <ul>
+                    <?php foreach ($children as $catChild){?>
+                        <li class="category__children__title">
+                            <a href="/category/<?= $catChild["id"] ?>/"><?= $catChild["title"] ?></a>
+                        </li>
+                    <?php } ?>
+                </ul>
             </div>
             <?php } ?>
 

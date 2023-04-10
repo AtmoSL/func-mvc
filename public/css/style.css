@@ -213,6 +213,27 @@ nav ul ul ul {
     margin-top: 100px;
 }
 
+/*Траница категорий*/
+.catalog__not-exist{
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 52px;
+    /* identical to box height */
+    text-align: center;
+
+    margin-top: 40px;
+
+    color: #818181;
+}
+
+.category__children__title{
+    font-weight: bold;
+}
+
+.category__children ul{
+    margin-left: 20px;
+}
+
 /*Страница оформления заказа*/
 .cart__title {
     margin-bottom: 52px;
