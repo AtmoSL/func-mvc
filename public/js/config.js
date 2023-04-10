@@ -1,0 +1,1 @@
+const mainUrl = "http://func-mvc/";

@@ -1,5 +1,4 @@
 console.log('Я подключён');
-const mainUrl = "http://func-mvc/";
 const cartCounter = document.getElementById('#cartCounter'); //Счётчик товаров в корзине
 const cartDeleteButtons = document.querySelectorAll(".cart__card__delete"); //Получение всех кнопок "Удалить" в корзине
 const cartButtons = document.querySelectorAll(".catalog__card__button"); //Получение всех кнопок "В корзину"
