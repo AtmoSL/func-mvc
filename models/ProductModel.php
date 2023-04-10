@@ -210,8 +210,6 @@ function validateProductForCreate()
         return false;
     }
 
-    debug($_FILES);
-
     return true;
 }
 
@@ -251,4 +249,18 @@ function validateProductForUpdate($id){
     }
 
     return $product;
+}
+
+/**
+ * Сброс категорий товаров
+ *
+ * @param $categoryId
+ * @return true
+ */
+function resetProductsCategory($categoryId){
+    $sql = "UPDATE `products` SET `category_id` = '1' WHERE `category_id` = '$categoryId'";
+
+    mysqliSql($sql);
+
+    return true;
 }

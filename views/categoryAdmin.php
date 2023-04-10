@@ -38,6 +38,9 @@
                     </form>
                     <?php /** @var array $allCategories */
                     foreach ($allCategories as $categoryItem) { ?>
+
+                        <form action="/categoryadmin/delete/<?= $categoryItem["id"] ?>/" id="deleteForm-<?= $categoryItem["id"] ?>">
+                        </form>
                         <form action="/categoryadmin/update/<?= $categoryItem["id"] ?>/" method="post">
                             <tr id="categoryRow-<?= $categoryItem["id"] ?>">
 
@@ -55,9 +58,10 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <div class="categoryadmin__delete__btn" id="<?= $categoryItem["id"] ?>">
+
+                                    <button class="categoryadmin__delete__btn" id="<?= $categoryItem["id"] ?>" form="deleteForm-<?= $categoryItem["id"] ?>">
                                         Удалить
-                                    </div>
+                                    </button>
                                     <button type="submit">Изменить</button>
                                 </td>
 

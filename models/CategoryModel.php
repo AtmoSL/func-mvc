@@ -61,7 +61,7 @@ function getAllCategories()
 {
     $sql = "SELECT *
             FROM `categories`
-            WHERE `id` > '1'";
+            WHERE 1";
 
     $result = mysqliQueryArray($sql);
 
@@ -147,7 +147,8 @@ function validationCategory()
     return true;
 }
 
-function updateCategory($id, $category){
+function updateCategory($id, $category)
+{
     extract($category);
 
     $sql = "UPDATE `categories` SET
@@ -158,5 +159,34 @@ function updateCategory($id, $category){
     $result = mysqliSql($sql);
 
     return $result;
+
+}
+
+/**
+ * Проверка существования категории
+ *
+ * @param $categoryId
+ * @return mixed|null
+ */
+function existCategory($categoryId)
+{
+    $sql = "SELECT `id` FROM `categories` WHERE `id` = '$categoryId'";
+
+    $result = mysqliQueryOneArray($sql);
+
+    if (isset($result['id'])) {
+        return $result['id'];
+    } else {
+        return null;
+    }
+}
+
+function deleteCategory($categoryId)
+{
+    $sql = "DELETE FROM categories WHERE `categories`.`id` = '$categoryId'";
+
+    mysqliSql($sql);
+
+    return true;
 
 }

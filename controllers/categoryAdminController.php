@@ -1,5 +1,6 @@
 <?php
 include '../models/CategoryModel.php';
+include '../models/ProductModel.php';
 
 /**
  * Вывод страницы редактирования категорий
@@ -79,5 +80,27 @@ function updateAction(){
     }
 
     header("location: /categoryadmin/");
+    return true;
+}
+
+function deleteAction(){
+    $categoryId = isset($_GET['id']) ? $_GET['id'] : null;
+
+    if ($_SESSION["user"]["role"] != 2) {
+        header("location: /");
+        return false;
+    }
+
+    if(!existCategory($categoryId)){
+        header("location: /categoryadmin/");
+        return false;
+    }
+
+    resetProductsCategory($categoryId);
+
+    deleteCategory($categoryId);
+
+    header("location: /categoryadmin/");
+
     return true;
 }
