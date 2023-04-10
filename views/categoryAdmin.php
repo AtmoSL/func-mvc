@@ -37,7 +37,7 @@
                         </tr>
                     </form>
                     <?php /** @var array $allCategories */
-                    foreach ($allCategories as $categoryItem) { ?>
+                    foreach ($allCategories as $categoryItem) { if($categoryItem['id'] != 1){ ?>
 
                         <form action="/categoryadmin/delete/<?= $categoryItem["id"] ?>/" id="deleteForm-<?= $categoryItem["id"] ?>">
                         </form>
@@ -49,6 +49,9 @@
                                     <input type="text" name="title" id="title" value="<?= $categoryItem['title'] ?>">
                                 </td>
                                 <td>
+                                    <?php if($categoryItem['parent_id'] == 0){ ?>
+                                    Без категории(корневая)
+                                    <?php }else{ ?>
 
                                     <select class="categoryadmin__selector" name="parent_id" id="<?= $categoryItem["id"] ?>">
                                         <?php /** @var array $productCategories */
@@ -56,6 +59,7 @@
                                             <option value="<?= $categoryParent["id"] ?>" <?= ($categoryParent["id"] == $categoryItem["parent_id"]) ? "selected" : "" ?>><?= $categoryParent["title"] ?></option>
                                         <?php } ?>
                                     </select>
+                            <?php }?>
                                 </td>
                                 <td>
 
@@ -67,7 +71,7 @@
 
                             </tr>
                         </form>
-                    <?php } ?>
+                    <?php }} ?>
                     </tbody>
                 </table>
             </div>
