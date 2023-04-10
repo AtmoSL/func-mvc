@@ -117,7 +117,8 @@ function updateProductCount($id, $count)
  * @param array $product
  * @return bool
  */
-function createProduct($product){
+function createProduct($product)
+{
     extract($product);
 
     $sql = "INSERT INTO `products` (`id`, `category_id`, `title`, `price`, `photo_path`, `count`) VALUES (NULL, '$category_id', '$title', '$price', '$photo_path', '$count')";
@@ -134,7 +135,8 @@ function createProduct($product){
  * @param $id
  * @return bool
  */
-function updateProduct($product, $id){
+function updateProduct($product, $id)
+{
     extract($product);
     $sql = "UPDATE `products` SET 
                       `category_id` = '$category_id', 
@@ -155,7 +157,8 @@ function updateProduct($product, $id){
  * @param $id
  * @return bool
  */
-function productDelete($id){
+function productDelete($id)
+{
     $sql = "DELETE FROM products WHERE `products`.`id` = '$id'";
 
     mysqliSql($sql);
@@ -164,10 +167,88 @@ function productDelete($id){
 }
 
 
-function getProductPhotoPath($id){
+function getProductPhotoPath($id)
+{
     $sql = "SELECT `photo_path` FROM `products` WHERE id = '$id'";
 
     $result = mysqliQueryOneArray($sql);
 
     return $result['photo_path'];
+}
+
+/**
+ * Валидация при создании товара
+ * @return bool
+ */
+function validateProductForCreate()
+{
+    if (!isset($_POST)) {
+        return false;
+    }
+    if (!isset($_POST["title"]) || !isset($_POST["category_id"]) || !isset($_POST["count"]) || !isset($_POST["price"])) {
+        return false;
+    }
+    if (!is_numeric($_POST['count']) || ltrim($_POST["count"], "0") < 0) {
+        return false;
+    }
+    if (!is_numeric($_POST['price']) || ltrim($_POST["price"], "0") < 0) {
+        return false;
+    }
+
+
+    if (!isset($_FILES)) {
+        return false;
+    }
+
+    //Загрузка и валидация файла
+    $filename = basename($_FILES['photo_path']['name']);
+    $file = $_FILES['photo_path'];
+    $extension = strtolower(substr($filename, strrpos($filename, '.') + 1));
+
+    if (!(($extension == "jpeg" || $extension == "jpg" || $extension == "gif" || $extension == "png") && ($file["type"] == "image/jpeg" || $file["type"] == "image/gif" || $file["type"] == "image/png") &&
+        ($file["size"] < 2120000))) {
+        return false;
+    }
+
+    debug($_FILES);
+
+    return true;
+}
+
+/**
+ * Валидация товара для обновления
+ *
+ * @param $id
+ * @return array|false
+ */
+function validateProductForUpdate($id){
+
+    if (!isset($_POST)) {
+        return false;
+    }
+    if (!isset($_POST["title"]) || !isset($_POST["category_id"]) || !isset($_POST["count"]) || !isset($_POST["price"])) {
+        return false;
+    }
+    if (!is_numeric($_POST['count']) || ltrim($_POST["count"], "0") < 0) {
+        return false;
+    }
+    if (!is_numeric($_POST['price']) || ltrim($_POST["price"], "0") < 0) {
+        return false;
+    }
+
+    $product = getProductById($id);
+
+
+    if (isset($_FILES['photo_path'])) {
+        $filename = basename($_FILES['photo_path']['name']);
+        $file = $_FILES['photo_path'];
+        $extension = strtolower(substr($filename, strrpos($filename, '.') + 1));
+
+        if (!(($extension == "jpeg" || $extension == "jpg" || $extension == "gif" || $extension == "png") && ($file["type"] == "image/jpeg" || $file["type"] == "image/gif" || $file["type"] == "image/png") &&
+            ($file["size"] < 2120000))) {
+            return false;
+        }
+    }
+
+    return $product;
 }

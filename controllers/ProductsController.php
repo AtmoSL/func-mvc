@@ -36,39 +36,15 @@ function createAction()
         die();
     }
 
-    if (!isset($_POST)) {
-        header("location: /products/");
-        die();
-    }
-    if (!isset($_POST["title"]) || !isset($_POST["category_id"]) || !isset($_POST["count"]) || !isset($_POST["price"])) {
-        header("location: /products/");
-        die();
-    }
-    if (ltrim($_POST["count"], "0") < 0) {
-        header("location: /products/");
-        die();
-    }
-    if (ltrim($_POST["price"], "0") < 0) {
+    if(!validateProductForCreate()){
         header("location: /products/");
         die();
     }
 
-
-    if (!isset($_FILES)) {
-        header("location: /products/");
-        die();
-    }
-
-    //Загрузка и валидация файла
+    //Загрузка файла
     $filename = basename($_FILES['photo_path']['name']);
     $file = $_FILES['photo_path'];
     $extension = strtolower(substr($filename, strrpos($filename, '.') + 1));
-
-    if (!(($extension == "jpeg" || $extension == "jpg" || $extension == "gif" || $extension == "png") && ($file["type"] == "image/jpeg" || $file["type"] == "image/gif" || $file["type"] == "image/png") &&
-        ($file["size"] < 2120000))) {
-        header("location: /products/");
-        die();
-    }
 
     $uploadDir = "img/products/";
     $newFileName = uniqid() . "." . $extension;
@@ -105,24 +81,12 @@ function updateAction()
 
     $id = isset($_GET['id']) ? $_GET['id'] : null;
 
-    if (!isset($_POST)) {
-        header("location: /products/");
-        die();
-    }
-    if (!isset($_POST["title"]) || !isset($_POST["category_id"]) || !isset($_POST["count"]) || !isset($_POST["price"])) {
-        header("location: /products/");
-        die();
-    }
-    if (ltrim($_POST["count"], "0") < 0) {
-        header("location: /products/");
-        die();
-    }
-    if (ltrim($_POST["price"], "0") < 0) {
-        header("location: /products/asdfasfd");
-        die();
-    }
+    $product = validateProductForUpdate($id);
 
-    $product = getProductById($id);
+    if(!$product){
+        header("location: /products/");
+        die();
+    }
 
 
     if (isset($_FILES['photo_path'])) {
@@ -130,12 +94,6 @@ function updateAction()
         $filename = basename($_FILES['photo_path']['name']);
         $file = $_FILES['photo_path'];
         $extension = strtolower(substr($filename, strrpos($filename, '.') + 1));
-
-        if (!(($extension == "jpeg" || $extension == "jpg" || $extension == "gif" || $extension == "png") && ($file["type"] == "image/jpeg" || $file["type"] == "image/gif" || $file["type"] == "image/png") &&
-            ($file["size"] < 2120000))) {
-            header("location: /products/");
-            die();
-        }
 
         $uploadDir = "img/products/";
         $newFileName = uniqid() . "." . $extension;
