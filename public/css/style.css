@@ -506,3 +506,29 @@ nav ul ul ul {
     width: 150px;
     text-align: center;
 }
+
+/*Страница редактирования категорий*/
+
+.categoryadmin__table {
+    margin: 20px auto;
+}
+
+.categoryadmin__table, .categoryadmin__table td, .categoryadmin__table tr {
+    border: 1px solid #000000;
+}
+
+.categoryadmin__table td {
+    padding: 5px 10px;
+}
+
+.categoryadmin__table img {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.categoryadmin__delete__btn {
+    padding: 5px 10px;
+    background-color: #f56060;
+    cursor: pointer;
+    margin: 30px 0;
+}

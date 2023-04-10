@@ -6,9 +6,8 @@
  * @return array
  */
 function getAllCategoriesForUl(){
-    $sql = "SELECT * FROM `categories` WHERE `parent_id` = 0";
 
-    $categories = mysqliQueryArray($sql);
+    $categories = getAllParentsCategories();
 
     foreach ($categories as &$category){
         $children = getChildrenForCat($category['id']);
@@ -58,7 +57,23 @@ function getChildrenForCat($id){
 function getAllCategories(){
     $sql = "SELECT *
             FROM `categories`
-            WHERE 1";
+            WHERE `id` > '1'";
+
+    $result = mysqliQueryArray($sql);
+
+    return $result;
+}
+
+/**
+ * Получение всех родительских категорий
+ *
+ *
+ * @return array
+ */
+function getAllParentsCategories(){
+    $sql = "SELECT *
+            FROM `categories`
+            WHERE `parent_id` = '0'";
 
     $result = mysqliQueryArray($sql);
 
