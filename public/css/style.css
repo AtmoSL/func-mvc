@@ -140,6 +140,7 @@ nav ul ul ul {
 }
 
 .catalog__card__inner {
+    max-width: 190px;
 }
 
 .catalog__card__image {
@@ -148,7 +149,6 @@ nav ul ul ul {
 }
 
 .catalog__card__image img{
-    max-width: 160px;
     max-height: 160px;
 }
 
@@ -230,6 +230,10 @@ nav ul ul ul {
     max-width: 648px;
     margin: auto;
     justify-content: space-between;
+}
+
+.cart__card__img img{
+    max-height: 160px;
 }
 
 .cart__card__actions, .cart__card__info {
