@@ -91,7 +91,7 @@ function deleteProductFromCart(data, event) {
     document.getElementById("cartCard-" + event.target.id).remove();
     document.getElementById("cartSeparator-" + event.target.id).remove();
     cartTotalPrice.textContent = data["cartTotalPrice"];
-    if (!data) {
+    if (data["count"] === 0) {
         cartCounter.textContent = "";
         document.getElementById("cartTotalPriceParent").remove();
         makeOrderButton.remove();

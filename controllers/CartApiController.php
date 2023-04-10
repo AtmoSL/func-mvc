@@ -64,7 +64,12 @@ function deleteFromCartAction()
         unset($_SESSION['cart']['productsId'][$id]);
     }
 
-    echo(json_encode($_SESSION['cart']['count']));
+    $result = [
+        "count" => $_SESSION['cart']['count'],
+        "cartTotalPrice" => $_SESSION['cart']['total_price'],
+    ];
+
+    echo(json_encode($result));
 }
 
 function minusFromCartAction()
