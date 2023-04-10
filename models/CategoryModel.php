@@ -122,7 +122,12 @@ function isItParentCategory($categoryId)
 
 }
 
-function validationCategoryForCreate()
+/**
+ * Валидация категории
+ *
+ * @return bool
+ */
+function validationCategory()
 {
     if (!isset($_POST)) {
         return false;
@@ -140,4 +145,18 @@ function validationCategoryForCreate()
         return false;
     }
     return true;
+}
+
+function updateCategory($id, $category){
+    extract($category);
+
+    $sql = "UPDATE `categories` SET
+                        `parent_id` = '$parent_id',
+                        `title` = '$title'
+                    WHERE `categories`.`id` = '$id'";
+
+    $result = mysqliSql($sql);
+
+    return $result;
+
 }

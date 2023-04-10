@@ -31,7 +31,7 @@ function createAction(){
         return false;
     }
 
-    if(!validationCategoryForCreate()){
+    if(!validationCategory()){
         header("location: /categoryadmin/");
         return false;
     }
@@ -48,6 +48,35 @@ function createAction(){
         return false;
     }
 
+
+    header("location: /categoryadmin/");
+    return true;
+}
+
+function updateAction(){
+    $id = isset($_GET['id']) ? $_GET['id'] : null;
+
+    if ($_SESSION["user"]["role"] != 2) {
+        header("location: /");
+        return false;
+    }
+
+    if(!validationCategory()){
+        header("location: /categoryadmin/");
+        return false;
+    }
+
+    $newCategory = [
+        'title' => $_POST['title'],
+        'parent_id' => $_POST['parent_id']
+    ];
+
+    $category = updateCategory($id, $newCategory);
+
+    if(!$category){
+        header("location: /categoryadmin/");
+        return false;
+    }
 
     header("location: /categoryadmin/");
     return true;

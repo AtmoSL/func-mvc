@@ -47,7 +47,7 @@
                                 </td>
                                 <td>
 
-                                    <select class="categoryadmin__selector" name="category_id" id="<?= $categoryItem["id"] ?>">
+                                    <select class="categoryadmin__selector" name="parent_id" id="<?= $categoryItem["id"] ?>">
                                         <?php /** @var array $productCategories */
                                         foreach ($allCategoriesParents as $categoryParent) { ?>
                                             <option value="<?= $categoryParent["id"] ?>" <?= ($categoryParent["id"] == $categoryItem["parent_id"]) ? "selected" : "" ?>><?= $categoryParent["title"] ?></option>
